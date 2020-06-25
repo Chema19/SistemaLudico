@@ -8,37 +8,21 @@ namespace SistemaLudico.Controllers
 {
     public class MathOperationController : Controller
     {
-        // GET: MatematicOperation
+        // GET: MathOperation
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ProblenAditionStart()
+        public ActionResult AditionStart()
+        {
+            return View();
+        }
+        public ActionResult SustractionStart()
         {
             return View();
         }
 
-        public ActionResult Question1()
-        {
-            return View();
-        }
-        public ActionResult Question2()
-        {
-            return View();
-        }
-        public ActionResult Question3()
-        {
-            return View();
-        }
-        public ActionResult Question4()
-        {
-            return View();
-        }
-        public ActionResult Question5()
-        {
-            return View();
-        }
 
         public ActionResult Level()
         {
@@ -49,24 +33,7 @@ namespace SistemaLudico.Controllers
         {
             return View();
         }
-
-        public ActionResult Juego1()
-        {
-            return View();
-        }
-        public ActionResult Juego2()
-        {
-            return View();
-        }
-        public ActionResult Juego3()
-        {
-            return View();
-        }
-        public ActionResult Juego4()
-        {
-            return View();
-        }
-        public ActionResult Juego5()
+        public ActionResult Result()
         {
             return View();
         }

@@ -13,5 +13,29 @@ namespace SistemaLudico.Controllers
         {
             return View();
         }
+        #region Cursos
+        public ActionResult Cursos()
+        {
+            return View();
+        }
+        #endregion
+        #region Materiales
+        public ActionResult Materiales()
+        {
+            return View();
+        }
+        #endregion
+        #region Ejercicios
+        public ActionResult Ejercicios()
+        {
+            return View();
+        }
+        #endregion
+        #region Usuario
+        public ActionResult Usuario()
+        {
+            return View();
+        }
+        #endregion
     }
 }

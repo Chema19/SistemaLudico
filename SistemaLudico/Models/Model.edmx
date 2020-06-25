@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDSistemaLudicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="AdministradorId" />
+          </Key>
+          <Property Name="AdministradorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasenia" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="CalificacionId" />
+          </Key>
+          <Property Name="CalificacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nota" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="TipoJuegoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaPdf" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaAudio" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaWord" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="AdministradorEdicionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Ejercicio">
+          <Key>
+            <PropertyRef Name="EjercicioId" />
+          </Key>
+          <Property Name="EjercicioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor1" Type="int" Nullable="false" />
+          <Property Name="Valor2" Type="int" Nullable="false" />
+          <Property Name="Resultado" Type="int" Nullable="false" />
+          <Property Name="RutaImagen" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TipoJuegoId" Type="int" Nullable="false" />
+          <Property Name="TemaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Orden" Type="int" />
+        </EntityType>
+        <EntityType Name="Participante">
+          <Key>
+            <PropertyRef Name="ParticipanteId" />
+          </Key>
+          <Property Name="ParticipanteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Progreso">
+          <Key>
+            <PropertyRef Name="ProgresoId" />
+          </Key>
+          <Property Name="ProgresoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParticipanteId" Type="int" Nullable="false" />
+          <Property Name="TemaId" Type="int" Nullable="false" />
+          <Property Name="EstadoProgreso" Type="varchar" MaxLength="3" />
+          <Property Name="EjercicioId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tema">
+          <Key>
+            <PropertyRef Name="TemaId" />
+          </Key>
+          <Property Name="TemaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaWord" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaPdf" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaAudio" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RutaPpt" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaCreación" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CursoId" Type="int" />
+          <Property Name="AdministradorEdicionId" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoJuego">
+          <Key>
+            <PropertyRef Name="TipoJuegoId" />
+          </Key>
+          <Property Name="TipoJuegoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="TemaId" Type="int" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+          <Property Name="Nivel" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <Association Name="FK_Calificacion_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_TipoJuego">
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoJuego">
+              <PropertyRef Name="TipoJuegoId" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="TipoJuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Curso_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="AdministradorId" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="AdministradorEdicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejercicio_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejercicio_TipoJuego">
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoJuego">
+              <PropertyRef Name="TipoJuegoId" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="TipoJuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="0..1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="EjercicioId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="EjercicioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Participante">
+          <End Role="Participante" Type="Self.Participante" Multiplicity="1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="ParticipanteId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="AdministradorId" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="AdministradorEdicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoJuego_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="TipoJuego">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDSistemaLudicoModelStoreContainer">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ejercicio" EntityType="Self.Ejercicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participante" EntityType="Self.Participante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Progreso" EntityType="Self.Progreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tema" EntityType="Self.Tema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoJuego" EntityType="Self.TipoJuego" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Calificacion_Curso" Association="Self.FK_Calificacion_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_TipoJuego" Association="Self.FK_Calificacion_TipoJuego">
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Curso_Administrador" Association="Self.FK_Curso_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejercicio_Tema" Association="Self.FK_Ejercicio_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejercicio_TipoJuego" Association="Self.FK_Ejercicio_TipoJuego">
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Ejercicio" Association="Self.FK_Progreso_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Participante" Association="Self.FK_Progreso_Participante">
+            <End Role="Participante" EntitySet="Participante" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Tema" Association="Self.FK_Progreso_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Administrador" Association="Self.FK_Tema_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Curso" Association="Self.FK_Tema_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoJuego_Tema" Association="Self.FK_TipoJuego_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDSistemaLudicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="AdministradorId" />
+          </Key>
+          <Property Name="AdministradorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Curso_Administrador" FromRole="Administrador" ToRole="Curso" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_Tema_Administrador" FromRole="Administrador" ToRole="Tema" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="CalificacionId" />
+          </Key>
+          <Property Name="CalificacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nota" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoJuegoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Calificacion_Curso" FromRole="Calificacion" ToRole="Curso" />
+          <NavigationProperty Name="TipoJuego" Relationship="Self.FK_Calificacion_TipoJuego" FromRole="Calificacion" ToRole="TipoJuego" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaPdf" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaAudio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaWord" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdministradorEdicionId" Type="Int32" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Curso_Administrador" FromRole="Curso" ToRole="Administrador" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_Curso" FromRole="Curso" ToRole="Calificacion" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_Tema_Curso" FromRole="Curso" ToRole="Tema" />
+        </EntityType>
+        <EntityType Name="Ejercicio">
+          <Key>
+            <PropertyRef Name="EjercicioId" />
+          </Key>
+          <Property Name="EjercicioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor1" Type="Int32" Nullable="false" />
+          <Property Name="Valor2" Type="Int32" Nullable="false" />
+          <Property Name="Resultado" Type="Int32" Nullable="false" />
+          <Property Name="RutaImagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoJuegoId" Type="Int32" Nullable="false" />
+          <Property Name="TemaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Orden" Type="Int32" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_Ejercicio_Tema" FromRole="Ejercicio" ToRole="Tema" />
+          <NavigationProperty Name="TipoJuego" Relationship="Self.FK_Ejercicio_TipoJuego" FromRole="Ejercicio" ToRole="TipoJuego" />
+          <NavigationProperty Name="Progreso" Relationship="Self.FK_Progreso_Ejercicio" FromRole="Ejercicio" ToRole="Progreso" />
+        </EntityType>
+        <EntityType Name="Participante">
+          <Key>
+            <PropertyRef Name="ParticipanteId" />
+          </Key>
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Progreso" Relationship="Self.FK_Progreso_Participante" FromRole="Participante" ToRole="Progreso" />
+        </EntityType>
+        <EntityType Name="Progreso">
+          <Key>
+            <PropertyRef Name="ProgresoId" />
+          </Key>
+          <Property Name="ProgresoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+          <Property Name="TemaId" Type="Int32" Nullable="false" />
+          <Property Name="EstadoProgreso" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EjercicioId" Type="Int32" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.FK_Progreso_Ejercicio" FromRole="Progreso" ToRole="Ejercicio" />
+          <NavigationProperty Name="Participante" Relationship="Self.FK_Progreso_Participante" FromRole="Progreso" ToRole="Participante" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_Progreso_Tema" FromRole="Progreso" ToRole="Tema" />
+        </EntityType>
+        <EntityType Name="Tema">
+          <Key>
+            <PropertyRef Name="TemaId" />
+          </Key>
+          <Property Name="TemaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaWord" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaPdf" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaAudio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RutaPpt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreación" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CursoId" Type="Int32" />
+          <Property Name="AdministradorEdicionId" Type="Int32" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Tema_Administrador" FromRole="Tema" ToRole="Administrador" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Tema_Curso" FromRole="Tema" ToRole="Curso" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.FK_Ejercicio_Tema" FromRole="Tema" ToRole="Ejercicio" />
+          <NavigationProperty Name="Progreso" Relationship="Self.FK_Progreso_Tema" FromRole="Tema" ToRole="Progreso" />
+          <NavigationProperty Name="TipoJuego" Relationship="Self.FK_TipoJuego_Tema" FromRole="Tema" ToRole="TipoJuego" />
+        </EntityType>
+        <EntityType Name="TipoJuego">
+          <Key>
+            <PropertyRef Name="TipoJuegoId" />
+          </Key>
+          <Property Name="TipoJuegoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TemaId" Type="Int32" Nullable="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <Property Name="Nivel" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_TipoJuego" FromRole="TipoJuego" ToRole="Calificacion" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.FK_Ejercicio_TipoJuego" FromRole="TipoJuego" ToRole="Ejercicio" />
+          <NavigationProperty Name="Tema" Relationship="Self.FK_TipoJuego_Tema" FromRole="TipoJuego" ToRole="Tema" />
+        </EntityType>
+        <Association Name="FK_Curso_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="AdministradorId" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="AdministradorEdicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="AdministradorId" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="AdministradorEdicionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_TipoJuego">
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoJuego">
+              <PropertyRef Name="TipoJuegoId" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="TipoJuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tema_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="0..1" />
+          <End Role="Tema" Type="Self.Tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="Tema">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejercicio_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejercicio_TipoJuego">
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoJuego">
+              <PropertyRef Name="TipoJuegoId" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="TipoJuegoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="0..1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="EjercicioId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="EjercicioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Participante">
+          <End Role="Participante" Type="Self.Participante" Multiplicity="1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="ParticipanteId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoJuego_Tema">
+          <End Role="Tema" Type="Self.Tema" Multiplicity="1" />
+          <End Role="TipoJuego" Type="Self.TipoJuego" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tema">
+              <PropertyRef Name="TemaId" />
+            </Principal>
+            <Dependent Role="TipoJuego">
+              <PropertyRef Name="TemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDSistemaLudicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" />
+          <EntitySet Name="Ejercicio" EntityType="Self.Ejercicio" />
+          <EntitySet Name="Participante" EntityType="Self.Participante" />
+          <EntitySet Name="Progreso" EntityType="Self.Progreso" />
+          <EntitySet Name="Tema" EntityType="Self.Tema" />
+          <EntitySet Name="TipoJuego" EntityType="Self.TipoJuego" />
+          <AssociationSet Name="FK_Curso_Administrador" Association="Self.FK_Curso_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Administrador" Association="Self.FK_Tema_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Curso" Association="Self.FK_Calificacion_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_TipoJuego" Association="Self.FK_Calificacion_TipoJuego">
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tema_Curso" Association="Self.FK_Tema_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Tema" EntitySet="Tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejercicio_Tema" Association="Self.FK_Ejercicio_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejercicio_TipoJuego" Association="Self.FK_Ejercicio_TipoJuego">
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Ejercicio" Association="Self.FK_Progreso_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Participante" Association="Self.FK_Progreso_Participante">
+            <End Role="Participante" EntitySet="Participante" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Tema" Association="Self.FK_Progreso_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoJuego_Tema" Association="Self.FK_TipoJuego_Tema">
+            <End Role="Tema" EntitySet="Tema" />
+            <End Role="TipoJuego" EntitySet="TipoJuego" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDSistemaLudicoModelStoreContainer" CdmEntityContainer="BDSistemaLudicoEntities">
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="AdministradorId" ColumnName="AdministradorId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificacion">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Calificacion">
+              <MappingFragment StoreEntitySet="Calificacion">
+                <ScalarProperty Name="CalificacionId" ColumnName="CalificacionId" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="TipoJuegoId" ColumnName="TipoJuegoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RutaPdf" ColumnName="RutaPdf" />
+                <ScalarProperty Name="RutaAudio" ColumnName="RutaAudio" />
+                <ScalarProperty Name="RutaWord" ColumnName="RutaWord" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="AdministradorEdicionId" ColumnName="AdministradorEdicionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejercicio">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Ejercicio">
+              <MappingFragment StoreEntitySet="Ejercicio">
+                <ScalarProperty Name="EjercicioId" ColumnName="EjercicioId" />
+                <ScalarProperty Name="Valor1" ColumnName="Valor1" />
+                <ScalarProperty Name="Valor2" ColumnName="Valor2" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+                <ScalarProperty Name="TipoJuegoId" ColumnName="TipoJuegoId" />
+                <ScalarProperty Name="TemaId" ColumnName="TemaId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participante">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Participante">
+              <MappingFragment StoreEntitySet="Participante">
+                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Progreso">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Progreso">
+              <MappingFragment StoreEntitySet="Progreso">
+                <ScalarProperty Name="ProgresoId" ColumnName="ProgresoId" />
+                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+                <ScalarProperty Name="TemaId" ColumnName="TemaId" />
+                <ScalarProperty Name="EstadoProgreso" ColumnName="EstadoProgreso" />
+                <ScalarProperty Name="EjercicioId" ColumnName="EjercicioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tema">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.Tema">
+              <MappingFragment StoreEntitySet="Tema">
+                <ScalarProperty Name="TemaId" ColumnName="TemaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RutaWord" ColumnName="RutaWord" />
+                <ScalarProperty Name="RutaPdf" ColumnName="RutaPdf" />
+                <ScalarProperty Name="RutaAudio" ColumnName="RutaAudio" />
+                <ScalarProperty Name="RutaPpt" ColumnName="RutaPpt" />
+                <ScalarProperty Name="FechaCreación" ColumnName="FechaCreación" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="AdministradorEdicionId" ColumnName="AdministradorEdicionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoJuego">
+            <EntityTypeMapping TypeName="BDSistemaLudicoModel.TipoJuego">
+              <MappingFragment StoreEntitySet="TipoJuego">
+                <ScalarProperty Name="TipoJuegoId" ColumnName="TipoJuegoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TemaId" ColumnName="TemaId" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

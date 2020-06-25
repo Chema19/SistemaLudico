@@ -1,0 +1,184 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from coderthemes.com/ubold/layouts/light/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Dec 2018 15:19:14 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema Ludico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/assetsAdmin/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="~/Content/assetsAdmin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assetsAdmin/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assetsAdmin/css/app.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                <li class="d-none d-sm-block">
+                    <form class="app-search">
+                        <div class="app-search-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit">
+                                        <i class="fe-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                        <i class="fe-settings noti-icon"></i>
+                    </a>
+                </li>
+
+
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center">
+                    <span class="logo-lg">
+                         <span class="logo-lg-text-light">Sistema Ludico</span> 
+                    </span>
+                    <span class="logo-sm">
+                        <!-- <span class="logo-sm-text-dark">U</span> -->
+                        <img src="~/Content/assetsAdmin/images/logo-sm.png" alt="" height="24">
+                    </span>
+                </a>
+            </div>
+
+        </div>
+        <!-- end Topbar -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="slimscroll-menu">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+
+                    <ul class="metismenu" id="side-menu">
+
+                        <li class="menu-title">Navigation</li>
+
+                        <li>
+                            <a href="@Url.Action("Index","MainAdmin")">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Dashboards </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Cursos","MainAdmin")">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Cursos </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Materiales","MainAdmin");">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Materiales </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Ejercicios","MainAdmin")">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Ejercicios </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Usuario","MainAdmin")">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Usuario </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    @RenderBody()
+                    <!-- end page title -->
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            2020 &copy; Sistema Ludico <a href="#">Coderthemes</a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- /Right-bar -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- Vendor js -->
+    <script src="~/Content/assetsAdmin/js/vendor.min.js"></script>
+
+    <!-- App js -->
+    <script src="~/Content/assetsAdmin/js/app.min.js"></script>
+
+</body>
+
+<!-- Mirrored from coderthemes.com/ubold/layouts/light/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Dec 2018 15:19:14 GMT -->
+</html>

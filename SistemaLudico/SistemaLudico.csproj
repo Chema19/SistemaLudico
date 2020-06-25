@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,12 +138,328 @@
     <Compile Include="Controllers\MainAdminController.cs" />
     <Compile Include="Controllers\MainStudentController.cs" />
     <Compile Include="Controllers\MathOperationController.cs" />
+    <Compile Include="Controllers\MathProblemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Administrador.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calificacion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Curso.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ejercicio.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Participante.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Progreso.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tema.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoJuego.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assetsAdmin\css\app.min.css" />
+    <Content Include="Content\assetsAdmin\css\bootstrap.min.css" />
+    <Content Include="Content\assetsAdmin\css\icons.min.css" />
+    <Content Include="Content\assetsAdmin\fonts\dripicons-v2.svg" />
+    <Content Include="Content\assetsAdmin\fonts\dropify.svg" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400.svg" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400.svg" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900.svg" />
+    <Content Include="Content\assetsAdmin\fonts\feathere8ab.svg" />
+    <Content Include="Content\assetsAdmin\fonts\footable.svg" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfont5ba3.svg" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Icons4c82.svg" />
+    <Content Include="Content\assetsAdmin\fonts\themify9f24.svg" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Content\assetsAdmin\images\attached-files\img-1.jpg" />
+    <Content Include="Content\assetsAdmin\images\attached-files\img-2.jpg" />
+    <Content Include="Content\assetsAdmin\images\attached-files\img-3.jpg" />
+    <Content Include="Content\assetsAdmin\images\cards\amazon.png" />
+    <Content Include="Content\assetsAdmin\images\cards\american-express.png" />
+    <Content Include="Content\assetsAdmin\images\cards\discover.png" />
+    <Content Include="Content\assetsAdmin\images\cards\master.png" />
+    <Content Include="Content\assetsAdmin\images\cards\visa.png" />
+    <Content Include="Content\assetsAdmin\images\clear.png" />
+    <Content Include="Content\assetsAdmin\images\companies\airbnb.png" />
+    <Content Include="Content\assetsAdmin\images\companies\amazon.png" />
+    <Content Include="Content\assetsAdmin\images\companies\apple.png" />
+    <Content Include="Content\assetsAdmin\images\companies\cisco.png" />
+    <Content Include="Content\assetsAdmin\images\companies\facebook.png" />
+    <Content Include="Content\assetsAdmin\images\companies\google.png" />
+    <Content Include="Content\assetsAdmin\images\email\1.png" />
+    <Content Include="Content\assetsAdmin\images\email\2.png" />
+    <Content Include="Content\assetsAdmin\images\email\3.png" />
+    <Content Include="Content\assetsAdmin\images\favicon.ico" />
+    <Content Include="Content\assetsAdmin\images\jsgrid.png" />
+    <Content Include="Content\assetsAdmin\images\loading.gif" />
+    <Content Include="Content\assetsAdmin\images\logo-dark.png" />
+    <Content Include="Content\assetsAdmin\images\logo-light.png" />
+    <Content Include="Content\assetsAdmin\images\logo-sm.png" />
+    <Content Include="Content\assetsAdmin\images\macbook.png" />
+    <Content Include="Content\assetsAdmin\images\megamenu-bg.png" />
+    <Content Include="Content\assetsAdmin\images\multiple-arrow.png" />
+    <Content Include="Content\assetsAdmin\images\products\product-1.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-10.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-11.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-12.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-2.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-3.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-4.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-5.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-6.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-7.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-8.jpg" />
+    <Content Include="Content\assetsAdmin\images\products\product-9.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-1.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-2.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-3.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-4.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-5.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-6.jpg" />
+    <Content Include="Content\assetsAdmin\images\small\img-7.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-1.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-10.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-2.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-3.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-4.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-5.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-6.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-7.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-8.jpg" />
+    <Content Include="Content\assetsAdmin\images\users\user-9.jpg" />
+    <Content Include="Content\assetsAdmin\js\app.min.js" />
+    <Content Include="Content\assetsAdmin\js\pages\add-product.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\animation.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\bootstrap-tables.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\c3.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\calendar.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\chartist.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\chartjs.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\coming-soon.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\crm-dashboard.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\crm-leads.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\crm-opportunities.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\dashboard-1.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\dashboard-2.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\dashboard-3.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\dashboard-4.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\datatables.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\ecommerce-dashboard.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\flot.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\foo-tables.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-advanced.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-fileuploads.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-imagecrop.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-masks.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-pickers.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-quilljs.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-summernote.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-validation.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-wizard.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\form-xeditable.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\gallery.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\google-maps.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\inbox.js" />
+    <Content Include="Content\assetsAdmin\js\pages\jquery.chat.js" />
+    <Content Include="Content\assetsAdmin\js\pages\jquery.todo.js" />
+    <Content Include="Content\assetsAdmin\js\pages\jsgrid.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\justgage.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\kanban.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\loading-btn.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\mapeal-maps.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\morris.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\nestable.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\peity.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\range-sliders.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\responsive-table.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\ricksaw.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\sparkline.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\sweet-alerts.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\tabledit.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\tablesaw.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\tickets.js" />
+    <Content Include="Content\assetsAdmin\js\pages\toastr.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\tour.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\vector-maps.init.js" />
+    <Content Include="Content\assetsAdmin\js\pages\widgets.init.js" />
+    <Content Include="Content\assetsAdmin\js\vendor.min.js" />
+    <Content Include="Content\assetsAdmin\libs\animate\animate.min.css" />
+    <Content Include="Content\assetsAdmin\libs\autocomplete\jquery.autocomplete.min.js" />
+    <Content Include="Content\assetsAdmin\libs\autonumeric\autoNumeric-min.js" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-colorpicker\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.css" />
+    <Content Include="Content\assetsAdmin\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="Content\assetsAdmin\libs\c3\c3.min.css" />
+    <Content Include="Content\assetsAdmin\libs\c3\c3.min.js" />
+    <Content Include="Content\assetsAdmin\libs\chart-js\Chart.bundle.min.js" />
+    <Content Include="Content\assetsAdmin\libs\chartist\chartist-plugin-tooltip.min.js" />
+    <Content Include="Content\assetsAdmin\libs\chartist\chartist.min.css" />
+    <Content Include="Content\assetsAdmin\libs\chartist\chartist.min.js" />
+    <Content Include="Content\assetsAdmin\libs\clockpicker\bootstrap-clockpicker.min.css" />
+    <Content Include="Content\assetsAdmin\libs\clockpicker\bootstrap-clockpicker.min.js" />
+    <Content Include="Content\assetsAdmin\libs\cropper\cropper.min.css" />
+    <Content Include="Content\assetsAdmin\libs\cropper\cropper.min.js" />
+    <Content Include="Content\assetsAdmin\libs\custombox\custombox.min.css" />
+    <Content Include="Content\assetsAdmin\libs\custombox\custombox.min.js" />
+    <Content Include="Content\assetsAdmin\libs\d3\d3.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\buttons.bootstrap4.css" />
+    <Content Include="Content\assetsAdmin\libs\datatables\buttons.bootstrap4.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\buttons.flash.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\buttons.html5.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\buttons.print.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.buttons.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.keyTable.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.responsive.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\dataTables.select.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\jquery.dataTables.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\responsive.bootstrap4.css" />
+    <Content Include="Content\assetsAdmin\libs\datatables\responsive.bootstrap4.min.js" />
+    <Content Include="Content\assetsAdmin\libs\datatables\select.bootstrap4.css" />
+    <Content Include="Content\assetsAdmin\libs\dropify\dropify.min.css" />
+    <Content Include="Content\assetsAdmin\libs\dropify\dropify.min.js" />
+    <Content Include="Content\assetsAdmin\libs\dropzone\dropzone.min.css" />
+    <Content Include="Content\assetsAdmin\libs\dropzone\dropzone.min.js" />
+    <Content Include="Content\assetsAdmin\libs\flatpickr\flatpickr.min.css" />
+    <Content Include="Content\assetsAdmin\libs\flatpickr\flatpickr.min.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.crosshair.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.orderBars.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.pie.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.resize.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.selection.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.stack.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.time.js" />
+    <Content Include="Content\assetsAdmin\libs\flot-charts\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\assetsAdmin\libs\fonts\dropify-2.html" />
+    <Content Include="Content\assetsAdmin\libs\fonts\dropify-3.html" />
+    <Content Include="Content\assetsAdmin\libs\fonts\dropify-4.html" />
+    <Content Include="Content\assetsAdmin\libs\fonts\dropify.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\fonts\footable-2.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\fonts\footable-3.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\fonts\footable-4.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\fonts\footable.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\fonts\footabled41d.html" />
+    <Content Include="Content\assetsAdmin\libs\footable\footable.all.min.js" />
+    <Content Include="Content\assetsAdmin\libs\footable\footable.core.min.css" />
+    <Content Include="Content\assetsAdmin\libs\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Content\assetsAdmin\libs\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Content\assetsAdmin\libs\gmaps\gmaps.min.js" />
+    <Content Include="Content\assetsAdmin\libs\hopscotch\hopscotch.min.css" />
+    <Content Include="Content\assetsAdmin\libs\hopscotch\hopscotch.min.js" />
+    <Content Include="Content\assetsAdmin\libs\img\clear.html" />
+    <Content Include="Content\assetsAdmin\libs\img\loading.html" />
+    <Content Include="Content\assetsAdmin\libs\img\sprite-green.html" />
+    <Content Include="Content\assetsAdmin\libs\img\sprite-skin-modern.html" />
+    <Content Include="Content\assetsAdmin\libs\img\switch.html" />
+    <Content Include="Content\assetsAdmin\libs\ion-rangeslider\ion.rangeSlider.css" />
+    <Content Include="Content\assetsAdmin\libs\ion-rangeslider\ion.rangeSlider.min.js" />
+    <Content Include="Content\assetsAdmin\libs\ion-rangeslider\ion.rangeSlider.skinModern.css" />
+    <Content Include="Content\assetsAdmin\libs\jquery-countdown\jquery.countdown.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-knob\jquery.knob.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-mapael\jquery.mapael.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-mapael\usa_states.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-mapael\world_countries.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-mask-plugin\jquery.mask.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-mockjax\jquery.mockjax.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-nice-select\jquery.nice-select.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-nice-select\nice-select.css" />
+    <Content Include="Content\assetsAdmin\libs\jquery-scrollto\jquery.scrollTo.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-sparkline\jquery.sparkline.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-tabledit\jquery.tabledit.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-toast\jquery.toast.min.css" />
+    <Content Include="Content\assetsAdmin\libs\jquery-toast\jquery.toast.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-au-mill-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-ca-lcc-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-in-mill-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-us-merc-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\assetsAdmin\libs\jsgrid\jsgrid-theme.css" />
+    <Content Include="Content\assetsAdmin\libs\jsgrid\jsgrid.min.css" />
+    <Content Include="Content\assetsAdmin\libs\jsgrid\jsgrid.min.js" />
+    <Content Include="Content\assetsAdmin\libs\justgage\justgage.js" />
+    <Content Include="Content\assetsAdmin\libs\katex\katex.min.js" />
+    <Content Include="Content\assetsAdmin\libs\ladda\ladda-themeless.min.css" />
+    <Content Include="Content\assetsAdmin\libs\ladda\ladda.js" />
+    <Content Include="Content\assetsAdmin\libs\ladda\spin.js" />
+    <Content Include="Content\assetsAdmin\libs\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="Content\assetsAdmin\libs\magnific-popup\magnific-popup.css" />
+    <Content Include="Content\assetsAdmin\libs\moment\moment.min.js" />
+    <Content Include="Content\assetsAdmin\libs\morris-js\morris.min.js" />
+    <Content Include="Content\assetsAdmin\libs\multiselect\jquery.multi-select.js" />
+    <Content Include="Content\assetsAdmin\libs\multiselect\multi-select.css" />
+    <Content Include="Content\assetsAdmin\libs\nestable2\jquery.nestable.min.css" />
+    <Content Include="Content\assetsAdmin\libs\nestable2\jquery.nestable.min.js" />
+    <Content Include="Content\assetsAdmin\libs\parsleyjs\parsley.min.js" />
+    <Content Include="Content\assetsAdmin\libs\pdfmake\pdfmake.min.js" />
+    <Content Include="Content\assetsAdmin\libs\pdfmake\vfs_fonts.js" />
+    <Content Include="Content\assetsAdmin\libs\peity\jquery.peity.min.js" />
+    <Content Include="Content\assetsAdmin\libs\quill\quill.bubble.css" />
+    <Content Include="Content\assetsAdmin\libs\quill\quill.core.css" />
+    <Content Include="Content\assetsAdmin\libs\quill\quill.min.js" />
+    <Content Include="Content\assetsAdmin\libs\quill\quill.snow.css" />
+    <Content Include="Content\assetsAdmin\libs\raphael\raphael.min.js" />
+    <Content Include="Content\assetsAdmin\libs\rickshaw\rickshaw.min.css" />
+    <Content Include="Content\assetsAdmin\libs\rickshaw\rickshaw.min.js" />
+    <Content Include="Content\assetsAdmin\libs\rwd-table\rwd-table.min.css" />
+    <Content Include="Content\assetsAdmin\libs\rwd-table\rwd-table.min.js" />
+    <Content Include="Content\assetsAdmin\libs\select2\select2.min.css" />
+    <Content Include="Content\assetsAdmin\libs\select2\select2.min.js" />
+    <Content Include="Content\assetsAdmin\libs\summernote\font\summernote9d3d-2.html" />
+    <Content Include="Content\assetsAdmin\libs\summernote\font\summernote9d3d-3.html" />
+    <Content Include="Content\assetsAdmin\libs\summernote\font\summernote9d3d.html" />
+    <Content Include="Content\assetsAdmin\libs\summernote\font\summernoted41d.html" />
+    <Content Include="Content\assetsAdmin\libs\summernote\summernote-bs4.css" />
+    <Content Include="Content\assetsAdmin\libs\summernote\summernote-bs4.min.js" />
+    <Content Include="Content\assetsAdmin\libs\sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\assetsAdmin\libs\sweetalert2\sweetalert2.min.js" />
+    <Content Include="Content\assetsAdmin\libs\switchery\switchery.min.css" />
+    <Content Include="Content\assetsAdmin\libs\switchery\switchery.min.js" />
+    <Content Include="Content\assetsAdmin\libs\tablesaw\tablesaw.css" />
+    <Content Include="Content\assetsAdmin\libs\tablesaw\tablesaw.js" />
+    <Content Include="Content\assetsAdmin\libs\tippy-js\tippy.all.min.js" />
+    <Content Include="Content\assetsAdmin\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Content\assetsAdmin\libs\x-editable\bootstrap-editable.css" />
+    <Content Include="Content\assetsAdmin\libs\x-editable\bootstrap-editable.min.js" />
     <Content Include="Content\assets\app.bundle.min.js" />
     <Content Include="Content\assets\app.min.js" />
     <Content Include="Content\assets\css\app.min.css" />
@@ -437,8 +761,77 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\assetsAdmin\fonts\dripicons-v2.eot" />
+    <Content Include="Content\assetsAdmin\fonts\dripicons-v2.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\dripicons-v2.woff" />
+    <Content Include="Content\assetsAdmin\fonts\dripicons-v2d41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\dropify.eot" />
+    <Content Include="Content\assetsAdmin\fonts\dropify.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\dropify.woff" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400.eot" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400.woff" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400.eot" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400.woff" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900.eot" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900.woff" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\fa-solid-900d41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\feathere8ab.eot" />
+    <Content Include="Content\assetsAdmin\fonts\feathere8ab.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\feathere8ab.woff" />
+    <Content Include="Content\assetsAdmin\fonts\footable.eot" />
+    <Content Include="Content\assetsAdmin\fonts\footable.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\footable.woff" />
+    <Content Include="Content\assetsAdmin\fonts\footabled41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfont5ba3.eot" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfont5ba3.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfont5ba3.woff" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfont5ba3.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\materialdesignicons-webfontd41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Icons4c82.eot" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Icons4c82.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Icons4c82.woff" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Icons4c82.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\Simple-Line-Iconsd41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\summernote.eot" />
+    <Content Include="Content\assetsAdmin\fonts\summernoted41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\summernoted41d.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\summernoted41d.woff" />
+    <Content Include="Content\assetsAdmin\fonts\themify9f24.eot" />
+    <Content Include="Content\assetsAdmin\fonts\themify9f24.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\themify9f24.woff" />
+    <Content Include="Content\assetsAdmin\fonts\themifyd41d.eot" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfontd41d.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -468,24 +861,35 @@
     <Content Include="Views\MainStudent\Index.cshtml" />
     <Content Include="Views\MainStudent\Avatar.cshtml" />
     <Content Include="Views\MainStudent\Cursos.cshtml" />
+    <Content Include="Views\MathProblem\Index.cshtml" />
+    <Content Include="Views\MathProblem\ProblenAditionStart.cshtml" />
+    <Content Include="Views\MathProblem\Question1.cshtml" />
+    <Content Include="Views\MathProblem\Question2.cshtml" />
+    <Content Include="Views\MathProblem\Question3.cshtml" />
+    <Content Include="Views\MathProblem\Question4.cshtml" />
+    <Content Include="Views\MathProblem\Question5.cshtml" />
+    <Content Include="Views\MathProblem\Juego1.cshtml" />
+    <Content Include="Views\MathProblem\Juego2.cshtml" />
+    <Content Include="Views\MathProblem\Juego3.cshtml" />
+    <Content Include="Views\MathProblem\Juego4.cshtml" />
+    <Content Include="Views\MathProblem\Juego5.cshtml" />
+    <Content Include="Views\MathProblem\Level.cshtml" />
+    <Content Include="Views\MathProblem\Games.cshtml" />
+    <Content Include="Views\MathProblem\Result.cshtml" />
     <Content Include="Views\MathOperation\Index.cshtml" />
-    <Content Include="Views\MathOperation\ProblenAditionStart.cshtml" />
-    <Content Include="Views\MathOperation\Question1.cshtml" />
-    <Content Include="Views\MathOperation\Question2.cshtml" />
-    <Content Include="Views\MathOperation\Question3.cshtml" />
-    <Content Include="Views\MathOperation\Question4.cshtml" />
-    <Content Include="Views\MathOperation\Question5.cshtml" />
-    <Content Include="Views\MathOperation\Juego1.cshtml" />
-    <Content Include="Views\MathOperation\Juego2.cshtml" />
-    <Content Include="Views\MathOperation\Juego3.cshtml" />
-    <Content Include="Views\MathOperation\Juego4.cshtml" />
-    <Content Include="Views\MathOperation\Juego5.cshtml" />
+    <Content Include="Views\MathOperation\AditionStart.cshtml" />
+    <Content Include="Views\MathOperation\SustractionStart.cshtml" />
     <Content Include="Views\MathOperation\Level.cshtml" />
     <Content Include="Views\MathOperation\Games.cshtml" />
+    <Content Include="Views\MainAdmin\_LayoutAdmin.cshtml" />
+    <Content Include="Views\MainAdmin\_ViewStart.cshtml" />
+    <Content Include="Views\MainAdmin\Cursos.cshtml" />
+    <Content Include="Views\MainAdmin\Materiales.cshtml" />
+    <Content Include="Views\MainAdmin\Ejercicios.cshtml" />
+    <Content Include="Views\MainAdmin\Usuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -499,6 +903,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

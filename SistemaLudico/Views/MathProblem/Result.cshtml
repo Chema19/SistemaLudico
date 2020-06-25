@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+<h2>Result</h2>
+<div style="background-image: url('../../Content/assets/img/fig25.jpg');height:650px">
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 style="text-align:center"> GRAN RETO: MATEMATICO</h1>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="~/Content/assets/img/fig4.png" width="300px" height="300px" class="center" />
+        </div>
+        <div class="col-lg-6">
+            <img src="~/Content/assets/img/fig26.jpg" width="300px" height="400px" class="center" />
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-lg-6">
+            <a class="col-lg-6 button small center" style="background-color:red;  color:white" href="@Url.Action("Cursos","MainStudent")">
+                IR A SALA
+            </a>
+        </div>
+        <div class="col-lg-6">
+            <a class="col-lg-6 button small center" style="background-color:skyblue;  color:white" href="@Url.Action("Level","MathProblem")" >
+                SIGUIR JUGANDO
+            </a>
+        </div>
+    </div>
+</div>
