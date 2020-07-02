@@ -1,8 +1,7 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainStudent.LoginStudentViewModel
 @{
     ViewBag.Title = "Index";
 }
-
 
 <div class="row">
     <div class="col-lg-12">
@@ -21,17 +20,17 @@
 
                         <div class="form-group mb-3">
                             <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su nombre</h4>
-                            <input type="text" id="simpleinput" class="form-control">
+                            @Html.TextBoxFor(x=>x.Nombre, new { @class="form-control" })
                         </div>
 
                         <div class="form-group mb-3">
                             <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su apellido</h4>
-                            <input type="text" id="simpleinput" class="form-control">
+                            @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
                         </div>
 
                         <div class="form-group mb-3">
                             <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su codigo de alumno</h4>
-                            <input type="text" id="simpleinput" class="form-control">
+                            @Html.TextBoxFor(x => x.Codigo, new { @class = "form-control" })
                         </div>
                         <br />
                         <div class="form-group mb-3">

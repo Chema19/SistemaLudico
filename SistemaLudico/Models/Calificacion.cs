@@ -17,9 +17,9 @@ namespace SistemaLudico.Models
         public int CalificacionId { get; set; }
         public decimal Nota { get; set; }
         public int CursoId { get; set; }
-        public int TipoJuegoId { get; set; }
+        public int JuegoId { get; set; }
     
         public virtual Curso Curso { get; set; }
-        public virtual TipoJuego TipoJuego { get; set; }
+        public virtual Juego Juego { get; set; }
     }
 }

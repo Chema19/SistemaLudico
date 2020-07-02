@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SistemaLudico.Controllers
 {
-    public class HomeController : Controller
+    public class MainController : Controller
     {
         public ActionResult Index()
         {

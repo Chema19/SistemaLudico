@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaLudico.ViewModels.MainStudent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,17 +7,28 @@ using System.Web.Mvc;
 
 namespace SistemaLudico.Controllers
 {
-    public class MathProblemController : Controller
+    public class MathProblemController : BaseController
     {
         // GET: MatematicProblem
-        public ActionResult Index()
+        public ActionResult Index(Int32? CursoId)
         {
-            return View();
+            TemaCursoViewModel vm = new TemaCursoViewModel();
+            vm.Fill(CargarDatosContext(), CursoId);
+            return View(vm);
         }
 
-        public ActionResult ProblenAditionStart()
+        public ActionResult ProblenSustractionStart(Int32 CursoId)
         {
-            return View();
+            TemaViewModel vm = new TemaViewModel();
+            vm.CursoId = CursoId;
+            return View(vm);
+        }
+
+        public ActionResult ProblenAditionStart(Int32 CursoId)
+        {
+            TemaViewModel vm = new TemaViewModel();
+            vm.CursoId = CursoId;
+            return View(vm);
         }
 
         public ActionResult Question1()

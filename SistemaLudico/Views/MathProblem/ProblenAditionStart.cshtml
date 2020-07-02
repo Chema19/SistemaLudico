@@ -1,4 +1,4 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainStudent.TemaViewModel
 @{
     ViewBag.Title = "ProblenAditionStart";
 }
@@ -12,13 +12,15 @@
             <img src="~/Content/assets/img/fig7.jpg" style="display: block;margin-left: auto;margin-right: auto;width:250px;height:350px" />
         </div>
         <div class="col-lg-8">
-            <img src="~/Content/assets/img/fig18.jpg" style="display: block;margin-left: auto;margin-right: auto;width:auto;height:300px" />
+            @*<img src="~/Content/assets/img/fig18.jpg" style="display: block;margin-left: auto;margin-right: auto;width:auto;height:300px" />*@
+            <iframe width="620" height="300" id="video"
+                    src="https://www.youtube.com/embed/8m4TyXgteZs"></iframe>
             <div class="row">
                 <div class="col-lg-6">
-                    <a class="col-lg-6 button small" style="background-color:red; color:white" href="@Url.Action("Index","MathProblem")">ATRAS</a>
+                    <a class="col-lg-6 button small" style="background-color:red; color:white" href="@Url.Action("Index","MathProblem", new { CursoId = Model.CursoId})">ATRAS</a>
                 </div>
                 <div class="col-lg-6">
-                    <a class="col-lg-6 button small" data-start-class style="background-color:orange; color:white">INICIAR CLASE</a>
+                    <a class="col-lg-6 button small" id="play-video" data-start-class style="background-color:orange; color:white">INICIAR CLASE</a>
                     <a class="col-lg-8 button small" data-start-example style="background-color:cadetblue; color:white" href="@Url.Action("Question1","MathProblem")" hidden="hidden">EXPLICACIÓN EJEMPLO</a>
                 </div>
             </div>
@@ -26,11 +28,22 @@
     </div>
 </div>
 
+
+
+
 @section scripts{
     <script>
+
+
+
         $('[data-start-class]').on('click', function () {
             $('[data-start-example]').removeAttr('hidden', 'hidden');
-            $('[data-start-class]').prop('hidden','hidden');
+            $('[data-start-class]').prop('hidden', 'hidden');
+            player.playVideo();
         });
-    </script>    
+
+            // Inject YouTube API script
+
+
+    </script>
 }

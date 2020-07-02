@@ -12,16 +12,16 @@ namespace SistemaLudico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoJuego
+    public partial class Juego
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoJuego()
+        public Juego()
         {
             this.Calificacion = new HashSet<Calificacion>();
             this.Ejercicio = new HashSet<Ejercicio>();
         }
     
-        public int TipoJuegoId { get; set; }
+        public int JuegoId { get; set; }
         public string Nombre { get; set; }
         public string Estado { get; set; }
         public int TemaId { get; set; }

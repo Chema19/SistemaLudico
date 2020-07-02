@@ -25,13 +25,13 @@ namespace SistemaLudico.Models
         public int Valor2 { get; set; }
         public int Resultado { get; set; }
         public string RutaImagen { get; set; }
-        public int TipoJuegoId { get; set; }
+        public int JuegoId { get; set; }
         public int TemaId { get; set; }
         public string Estado { get; set; }
         public Nullable<int> Orden { get; set; }
     
+        public virtual Juego Juego { get; set; }
         public virtual Tema Tema { get; set; }
-        public virtual TipoJuego TipoJuego { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Progreso> Progreso { get; set; }
     }

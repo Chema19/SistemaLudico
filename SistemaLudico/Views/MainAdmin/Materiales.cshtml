@@ -1,4 +1,4 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainAdmin.TemaViewModel
 @{
     ViewBag.Title = "Materiales";
 }
@@ -22,12 +22,13 @@
     <div class="col-lg-12">
         <div class="card-box">
             <button class="btn btn-primary">Agregar</button>
+        <hr />
             <div class="table-responsive">
                 <table class="table mb-0">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nomrbe del curso</th>
+                            <th>Nombre del curso</th>
                             <th>Tema de curso</th>
                             <th>Fecha</th>
                             <th>Archivo word</th>
@@ -38,39 +39,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var item in Model.LstTema)
+                        {
                         <tr>
                             <th scope="row">1</th>
+                            <td>@item.Curso.Nombre</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.FechaCreación</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>
+                                <a class="btn" href="@Url.Action("EditarMaterial","MainAdmin", new { TemaId = item.TemaId })"><i class="fa fa-edit" style="color:blue"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>

@@ -5,25 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="942c32323c7b4517bb6f8706a3658746" Name="Diagram1" ZoomLevel="71">
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Administrador" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Calificacion" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Curso" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Ejercicio" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Participante" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Progreso" Width="1.5" PointX="15" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.Tema" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDSistemaLudicoModel.TipoJuego" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Curso_Administrador" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Tema_Administrador" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Calificacion_Curso" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Calificacion_TipoJuego" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Tema_Curso" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Ejercicio_Tema" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Ejercicio_TipoJuego" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Progreso_Ejercicio" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Progreso_Participante" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_Progreso_Tema" ManuallyRouted="false" />
-        <AssociationConnector Association="BDSistemaLudicoModel.FK_TipoJuego_Tema" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Administrador" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Calificacion" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Curso" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Ejercicio" Width="1.5" PointX="10.75" PointY="6.25" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Juego" Width="1.5" PointX="7.5" PointY="8.875" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Participante" Width="1.5" PointX="10.75" PointY="2.75" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Progreso" Width="1.5" PointX="13" PointY="6.75" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDSistemaLudicoModel.Tema" Width="1.5" PointX="5.25" PointY="4.125" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Curso_Administrador" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Tema_Administrador" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Calificacion_Curso" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Calificacion_Juego" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Tema_Curso" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Ejercicio_Juego" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Ejercicio_Tema" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Progreso_Ejercicio" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_TipoJuego_Tema" />
+        <AssociationConnector Association="BDSistemaLudicoModel.FK_Progreso_Participante" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

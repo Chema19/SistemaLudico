@@ -57,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,14 +135,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GeometriController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MainAdminController.cs" />
     <Compile Include="Controllers\MainStudentController.cs" />
     <Compile Include="Controllers\MathOperationController.cs" />
     <Compile Include="Controllers\MathProblemController.cs" />
+    <Compile Include="Controllers\NumerationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileHelpers.cs" />
     <Compile Include="Models\Administrador.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -152,6 +157,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ejercicio.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Juego.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
@@ -175,13 +183,20 @@
     <Compile Include="Models\Progreso.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tema.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TipoJuego.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MainAdmin\CursoViewModel.cs" />
+    <Compile Include="ViewModels\MainAdmin\TemaViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\CursosStudentViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\LoginStudentViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\TemaCursoViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\TemaViewModel.cs" />
+    <Compile Include="Views\MainStudent\GameViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assetsAdmin\css\app.min.css" />
@@ -832,6 +847,7 @@
     <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.woff" />
     <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfont.woff2" />
     <Content Include="Content\assetsAdmin\fonts\weathericons-regular-webfontd41d.eot" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -854,9 +870,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Main\About.cshtml" />
+    <Content Include="Views\Main\Contact.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\MainAdmin\Index.cshtml" />
     <Content Include="Views\MainStudent\Index.cshtml" />
     <Content Include="Views\MainStudent\Avatar.cshtml" />
@@ -887,9 +903,28 @@
     <Content Include="Views\MainAdmin\Materiales.cshtml" />
     <Content Include="Views\MainAdmin\Ejercicios.cshtml" />
     <Content Include="Views\MainAdmin\Usuario.cshtml" />
+    <Content Include="Views\MainAdmin\EditarCurso.cshtml" />
+    <Content Include="Views\MainAdmin\EditarMaterial.cshtml" />
+    <Content Include="Views\MainAdmin\AgregarEjercicio.cshtml" />
+    <Content Include="Views\MainAdmin\EditarEjercicio.cshtml" />
+    <Content Include="Views\MathOperation\TableTwoAndThreeStart.cshtml" />
+    <Content Include="Views\MathProblem\ProblenSustractionStart.cshtml" />
+    <Content Include="Views\Geometri\Index.cshtml" />
+    <Content Include="Views\Geometri\LineStart.cshtml" />
+    <Content Include="Views\Geometri\ShapeStart.cshtml" />
+    <Content Include="Views\Geometri\BodyStart.cshtml" />
+    <Content Include="Views\Numeration\Index.cshtml" />
+    <Content Include="Views\Numeration\OneToFiveStart.cshtml" />
+    <Content Include="Views\Numeration\SixToTenStart.cshtml" />
+    <Content Include="Views\MathOperation\Juego1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\Curso\" />
+    <Folder Include="Files\Tema\" />
+    <Folder Include="ViewModels\MathOperation\" />
+    <Folder Include="ViewModels\MathProblem\" />
+    <Folder Include="Views\BaseController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

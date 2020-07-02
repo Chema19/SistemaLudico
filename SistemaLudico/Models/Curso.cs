@@ -29,6 +29,8 @@ namespace SistemaLudico.Models
         public System.DateTime FechaCreacion { get; set; }
         public string Estado { get; set; }
         public Nullable<int> AdministradorEdicionId { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
     
         public virtual Administrador Administrador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaLudico.ViewModels.MainStudent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SistemaLudico.Controllers
 {
-    public class MainStudentController : Controller
+    public class MainStudentController : BaseController
     {
         // GET: MainStudent
         public ActionResult Index()
@@ -14,8 +15,10 @@ namespace SistemaLudico.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(int? p)
+        public ActionResult Index(LoginStudentViewModel model)
         {
+            LoginStudentViewModel wm = new LoginStudentViewModel();
+            wm.Validacion(CargarDatosContext(), model);
             return RedirectToAction("Avatar", "MainStudent");
         }
 
@@ -31,7 +34,9 @@ namespace SistemaLudico.Controllers
 
         public ActionResult Cursos()
         {
-            return View();
+            CursosStudentViewModel vm = new CursosStudentViewModel();
+            vm.Fill(CargarDatosContext());
+            return View(vm);
         }
     }
 }

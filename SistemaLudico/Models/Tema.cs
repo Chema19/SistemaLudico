@@ -18,8 +18,7 @@ namespace SistemaLudico.Models
         public Tema()
         {
             this.Ejercicio = new HashSet<Ejercicio>();
-            this.Progreso = new HashSet<Progreso>();
-            this.TipoJuego = new HashSet<TipoJuego>();
+            this.Juego = new HashSet<Juego>();
         }
     
         public int TemaId { get; set; }
@@ -32,14 +31,14 @@ namespace SistemaLudico.Models
         public string Estado { get; set; }
         public Nullable<int> CursoId { get; set; }
         public Nullable<int> AdministradorEdicionId { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
     
         public virtual Administrador Administrador { get; set; }
         public virtual Curso Curso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ejercicio> Ejercicio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Progreso> Progreso { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TipoJuego> TipoJuego { get; set; }
+        public virtual ICollection<Juego> Juego { get; set; }
     }
 }
