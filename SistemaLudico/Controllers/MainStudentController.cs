@@ -26,6 +26,10 @@ namespace SistemaLudico.Controllers
         {
             return View();
         }
+        public ActionResult AvatarPersonaje()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Avatar(int? p)
         {
