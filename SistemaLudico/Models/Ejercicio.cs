@@ -21,14 +21,16 @@ namespace SistemaLudico.Models
         }
     
         public int EjercicioId { get; set; }
-        public int Valor1 { get; set; }
-        public int Valor2 { get; set; }
-        public int Resultado { get; set; }
+        public string Valor1 { get; set; }
+        public string Valor2 { get; set; }
+        public string Resultado { get; set; }
         public string RutaImagen { get; set; }
         public int JuegoId { get; set; }
         public int TemaId { get; set; }
         public string Estado { get; set; }
         public Nullable<int> Orden { get; set; }
+        public string LevelGame { get; set; }
+        public string LevelBIA { get; set; }
     
         public virtual Juego Juego { get; set; }
         public virtual Tema Tema { get; set; }

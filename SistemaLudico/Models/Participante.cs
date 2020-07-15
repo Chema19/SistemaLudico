@@ -18,6 +18,7 @@ namespace SistemaLudico.Models
         public Participante()
         {
             this.Progreso = new HashSet<Progreso>();
+            this.Puntuacion = new HashSet<Puntuacion>();
         }
     
         public int ParticipanteId { get; set; }
@@ -26,8 +27,15 @@ namespace SistemaLudico.Models
         public string Codigo { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string Estado { get; set; }
+        public string Cabello { get; set; }
+        public string Cabeza { get; set; }
+        public string Polo { get; set; }
+        public string Pantalo { get; set; }
+        public string Zapatillas { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Progreso> Progreso { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puntuacion> Puntuacion { get; set; }
     }
 }

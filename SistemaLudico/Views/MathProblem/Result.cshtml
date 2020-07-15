@@ -1,44 +1,42 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainStudent.ResultViewModel
 @{
     ViewBag.Title = "Result";
 }
-<style>
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
-</style>
-<h2>Result</h2>
-<div style="background-image: url('../../Content/assets/img/fig25.jpg');height:650px">
-    <br />
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 style="text-align:center"> GRAN RETO: MATEMATICO</h1>
+
+
+<div style="background-image: url('../../Content/assets/img/fig16.jpg');height:780px">
+
+
+    <div data-reto>
+        <br />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <h1 style="text-align:center; color:black"> Resultado del Juego </h1>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-lg-6">
-            <img src="~/Content/assets/img/fig4.png" width="300px" height="300px" class="center" />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+            </div>
+            <div class="grid-column">
+                <img src="@Url.Content("~/Content/assets/img/fig4.PNG")" width="385" height="385" />
+            </div>
+            <div class="grid-column">
+            </div>
         </div>
-        <div class="col-lg-6">
-            <img src="~/Content/assets/img/fig26.jpg" width="300px" height="400px" class="center" />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <h1 style="text-align:center; color:black"> @Model.MensajeFinal </h1>
+            </div>
         </div>
-    </div>
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-lg-6">
-            <a class="col-lg-6 button small center" style="background-color:red;  color:white" href="@Url.Action("Cursos","MainStudent")">
-                IR A SALA
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <a class="col-lg-6 button small center" style="background-color:skyblue;  color:white" href="@Url.Action("Level","MathProblem")" >
-                SIGUIR JUGANDO
-            </a>
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <a class="btn" style="background-color:green;  color:white" href="@Url.Action("Games", "MathProblem", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
+                    Pasar al siguiente Juego
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -17,7 +17,6 @@ namespace SistemaLudico.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Curso()
         {
-            this.Calificacion = new HashSet<Calificacion>();
             this.Tema = new HashSet<Tema>();
         }
     
@@ -33,8 +32,6 @@ namespace SistemaLudico.Models
         public string Controller { get; set; }
     
         public virtual Administrador Administrador { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calificacion> Calificacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tema> Tema { get; set; }
     }

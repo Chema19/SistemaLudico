@@ -150,9 +150,6 @@
     <Compile Include="Models\Administrador.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Calificacion.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Curso.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -177,13 +174,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Participante.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Progreso.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
+    <Compile Include="Models\Puntuacion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tema.cs">
@@ -193,10 +195,13 @@
     <Compile Include="ViewModels\MainAdmin\CursoViewModel.cs" />
     <Compile Include="ViewModels\MainAdmin\TemaViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\CursosStudentViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\LevelViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\LoginStudentViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\TemaCursoViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\TemaViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\GameViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\ResultViewModel.cs" />
+    <Compile Include="ViewModels\MainStudent\JuegoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assetsAdmin\css\app.min.css" />
@@ -969,6 +974,11 @@
     <Content Include="Content\assets\img\flag\russia.png" />
     <Content Include="Content\assets\img\flag\turkey.png" />
     <Content Include="Content\assets\img\flag\usa.png" />
+    <Content Include="Content\assets\img\Fondos\Fondo_Geometria.jpg" />
+    <Content Include="Content\assets\img\Fondos\Fondo_Multiplicacion.jpg" />
+    <Content Include="Content\assets\img\Fondos\Fondo_Problemas_Aditivos.jpg" />
+    <Content Include="Content\assets\img\Fondos\Fondo_Resta.jpg" />
+    <Content Include="Content\assets\img\Fondos\Fondo_Suma.jpg" />
     <Content Include="Content\assets\img\forum\category\01.png" />
     <Content Include="Content\assets\img\forum\category\02.png" />
     <Content Include="Content\assets\img\forum\category\03.png" />
@@ -1021,6 +1031,7 @@
     <Content Include="Content\assets\img\marketplace\items\18.jpg" />
     <Content Include="Content\assets\img\marketplace\items\19.jpg" />
     <Content Include="Content\assets\img\marketplace\items\20.jpg" />
+    <Content Include="Content\assets\img\problem\operation\adition\mariquita01.png" />
     <Content Include="Content\assets\img\quest\completedq-b.png" />
     <Content Include="Content\assets\img\quest\completedq-l.png" />
     <Content Include="Content\assets\img\quest\completedq-s.png" />
@@ -1067,7 +1078,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
@@ -1147,6 +1158,7 @@
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1178,8 +1190,6 @@
     <Content Include="Views\MathProblem\Games.cshtml" />
     <Content Include="Views\MathProblem\Result.cshtml" />
     <Content Include="Views\MathOperation\Index.cshtml" />
-    <Content Include="Views\MathOperation\AditionStart.cshtml" />
-    <Content Include="Views\MathOperation\SustractionStart.cshtml" />
     <Content Include="Views\MathOperation\Level.cshtml" />
     <Content Include="Views\MathOperation\Games.cshtml" />
     <Content Include="Views\MainAdmin\_LayoutAdmin.cshtml" />
@@ -1192,7 +1202,6 @@
     <Content Include="Views\MainAdmin\EditarMaterial.cshtml" />
     <Content Include="Views\MainAdmin\AgregarEjercicio.cshtml" />
     <Content Include="Views\MainAdmin\EditarEjercicio.cshtml" />
-    <Content Include="Views\MathOperation\TableTwoAndThreeStart.cshtml" />
     <Content Include="Views\MathProblem\ProblenSustractionStart.cshtml" />
     <Content Include="Views\Geometri\Index.cshtml" />
     <Content Include="Views\Geometri\LineStart.cshtml" />
@@ -1201,11 +1210,24 @@
     <Content Include="Views\Numeration\Index.cshtml" />
     <Content Include="Views\Numeration\OneToFiveStart.cshtml" />
     <Content Include="Views\Numeration\SixToTenStart.cshtml" />
-    <Content Include="Views\MathOperation\Juego1.cshtml" />
     <Content Include="Views\MainStudent\AvatarPersonaje.cshtml" />
+    <Content Include="Views\MathOperation\JuegoSuma.cshtml" />
+    <Content Include="Views\MainStudent\Temas.cshtml" />
+    <Content Include="Views\MainStudent\TemaStart.cshtml" />
+    <Content Include="Views\MathOperation\Result.cshtml" />
+    <Content Include="Views\MathOperation\JuegoResta.cshtml" />
+    <Content Include="Views\MathOperation\JuegoMultiplicacion.cshtml" />
+    <Content Include="Views\MathOperation\ResultByTopic.cshtml" />
+    <Content Include="Views\MathProblem\ResultByTopic.cshtml" />
+    <Content Include="Views\MathProblem\JuegoProblemasAditivos.cshtml" />
+    <Content Include="Views\MathProblem\JuegoProblemaSustraccion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\File\" />
+    <Folder Include="Content\assets\img\problem\math\" />
+    <Folder Include="Content\assets\img\problem\operation\multiplicacion\" />
+    <Folder Include="Content\assets\img\problem\operation\subtraction\" />
     <Folder Include="Files\Curso\" />
     <Folder Include="Files\Tema\" />
     <Folder Include="ViewModels\MathOperation\" />

@@ -19,14 +19,14 @@ namespace SistemaLudico.Controllers
         public ActionResult OneToFiveStart(Int32 CursoId)
         {
             TemaViewModel vm = new TemaViewModel();
-            vm.CursoId = CursoId;
+            //vm.CursoId = CursoId;
             return View(vm);
         }
 
         public ActionResult SixToTenStart(Int32 CursoId)
         {
             TemaViewModel vm = new TemaViewModel();
-            vm.CursoId = CursoId;
+            //vm.CursoId = CursoId;
             return View(vm);
         }
     }

@@ -42,5 +42,17 @@ namespace SistemaLudico.Controllers
             vm.Fill(CargarDatosContext());
             return View(vm);
         }
+        public ActionResult Temas(Int32? CursoId)
+        {
+            TemaCursoViewModel vm = new TemaCursoViewModel();
+            vm.Fill(CargarDatosContext(), CursoId);
+            return View(vm);
+        }
+        public ActionResult TemaStart(Int32? TemaId)
+        {
+            TemaViewModel vm = new TemaViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
+        }
     }
 }

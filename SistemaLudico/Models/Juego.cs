@@ -17,8 +17,8 @@ namespace SistemaLudico.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Juego()
         {
-            this.Calificacion = new HashSet<Calificacion>();
             this.Ejercicio = new HashSet<Ejercicio>();
+            this.Puntuacion = new HashSet<Puntuacion>();
         }
     
         public int JuegoId { get; set; }
@@ -27,11 +27,14 @@ namespace SistemaLudico.Models
         public int TemaId { get; set; }
         public int Orden { get; set; }
         public string Nivel { get; set; }
+        public string Fondo { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calificacion> Calificacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ejercicio> Ejercicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puntuacion> Puntuacion { get; set; }
         public virtual Tema Tema { get; set; }
     }
 }

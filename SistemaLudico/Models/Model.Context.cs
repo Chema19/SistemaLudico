@@ -26,13 +26,12 @@ namespace SistemaLudico.Models
         }
     
         public virtual DbSet<Administrador> Administrador { get; set; }
-        public virtual DbSet<Calificacion> Calificacion { get; set; }
         public virtual DbSet<Curso> Curso { get; set; }
         public virtual DbSet<Ejercicio> Ejercicio { get; set; }
         public virtual DbSet<Juego> Juego { get; set; }
         public virtual DbSet<Participante> Participante { get; set; }
         public virtual DbSet<Progreso> Progreso { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Puntuacion> Puntuacion { get; set; }
         public virtual DbSet<Tema> Tema { get; set; }
     }
 }

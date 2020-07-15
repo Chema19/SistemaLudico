@@ -1,0 +1,74 @@
+﻿@model SistemaLudico.ViewModels.MainStudent.ResultViewModel
+@{
+    ViewBag.Title = "Result";
+}
+
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .row {
+        display: flow-root !important;
+    }
+
+    [data-stile] {
+        width: 70px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+    }
+
+    .post-options {
+        background-color: transparent !important;
+        border-top: none !important;
+    }
+
+    .post-option:hover {
+        background-color: transparent !important;
+    }
+</style>
+
+<div style="background-image: url('../../Content/assets/img/fig16.jpg');height:780px">
+
+
+    <div data-reto>
+        <br />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <h1 style="text-align:center; color:black"> Resultado del Juego </h1>
+            </div>
+        </div>
+        <br />
+        <div class="grid grid-half change-on-desktop centered">
+            <div class="grid-column center">
+                <img src="@Url.Content("~/Content/assets/img/fig4.PNG")" width="385" height="385" />
+            </div>
+            <div class="grid-column">
+                @foreach (var item in Model.ListDetailNota)
+                {
+                    <h1 style="text-align:center; color:black">
+                        @item.Item1 : @item.Item2 puntos
+                    </h1>
+                }
+                <hr />
+                <h1 style="text-align:center; color:black"> @Model.MensajeFinal</h1>
+            </div>
+
+
+        </div>
+        <br />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <a class="btn" style="background-color:orange;  color:black" href="@Url.Action("Games", "MathProblem", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
+                    SALIR
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

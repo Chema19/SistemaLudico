@@ -12,12 +12,15 @@ namespace SistemaLudico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Puntuacion
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int PuntuacionId { get; set; }
+        public int Nota { get; set; }
+        public int JuegoId { get; set; }
+        public Nullable<int> ParticipanteId { get; set; }
+        public string LevelBIA { get; set; }
+    
+        public virtual Juego Juego { get; set; }
+        public virtual Participante Participante { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace SistemaLudico.Models
         public Nullable<int> AdministradorEdicionId { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
+        public string LinkYoutube { get; set; }
     
         public virtual Administrador Administrador { get; set; }
         public virtual Curso Curso { get; set; }

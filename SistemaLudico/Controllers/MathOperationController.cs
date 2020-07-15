@@ -1,5 +1,4 @@
 ﻿using SistemaLudico.ViewModels.MainStudent;
-using SistemaLudico.Views.MainStudent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,70 +9,132 @@ namespace SistemaLudico.Controllers
 {
     public class MathOperationController : BaseController
     {
-        // GET: MathOperation
-        public ActionResult Index(Int32? CursoId)
+        public ActionResult Level(Int32? TemaId)
         {
-            TemaCursoViewModel vm = new TemaCursoViewModel();
-            vm.Fill(CargarDatosContext(), CursoId);
+            LevelViewModel vm = new LevelViewModel();
+            vm.Fill(TemaId);
             return View(vm);
         }
-
-        public ActionResult AditionStart(Int32? CursoId)
-        {
-            TemaViewModel vm = new TemaViewModel();
-            vm.CursoId = CursoId;
-            return View(vm);
-        }
-        public ActionResult SustractionStart(Int32? CursoId)
-        {
-            TemaViewModel vm = new TemaViewModel();
-            vm.CursoId = CursoId;
-            return View(vm);
-        }
-        public ActionResult TableTwoAndThreeStart(Int32? CursoId)
-        {
-            TemaViewModel vm = new TemaViewModel();
-            vm.CursoId = CursoId;
-            return View(vm);
-        }
-
-        public ActionResult Level()
-        {
-            return View();
-        }
-
-        public ActionResult Games(String Level)
+        public ActionResult Games(Int32? TemaId, String LevelBIA)
         {
             GameViewModel vm = new GameViewModel();
-            vm.Level = Level;
+            vm.Fill(CargarDatosContext(), TemaId, LevelBIA);
             return View(vm);
         }
-        public ActionResult Juego1(String Level)
+        public ActionResult JuegoSuma(Int32? TemaId, String LevelGame)
         {
-            return View();
+            JuegoViewModel vm = new JuegoViewModel();
+            vm.Fill(CargarDatosContext(), TemaId, LevelGame);
+            return View(vm);
         }
-        public ActionResult Juego2()
+        public ActionResult JuegoResta(Int32? TemaId, String LevelGame)
         {
-            return View();
+            JuegoViewModel vm = new JuegoViewModel();
+            vm.Fill(CargarDatosContext(), TemaId, LevelGame);
+            return View(vm);
         }
-        public ActionResult Juego3()
+        public ActionResult JuegoMultiplicacion(Int32? TemaId, String LevelGame)
         {
-            return View();
+            JuegoViewModel vm = new JuegoViewModel();
+            vm.Fill(CargarDatosContext(), TemaId, LevelGame);
+            return View(vm);
         }
-        public ActionResult Juego4()
+        public ActionResult Result(Int32? EjercicioId, Int32? Vidas)
         {
-            return View();
+            ResultViewModel vm = new ResultViewModel();
+            vm.Fill(CargarDatosContext(), EjercicioId, Vidas);
+            return View(vm);
         }
-        public ActionResult Juego5()
+        public ActionResult ResultByTopic(Int32? JuegoId, String LevelBIA) {
+            ResultViewModel vm = new ResultViewModel();
+            vm.FillResultLevelBIA(CargarDatosContext(), JuegoId, LevelBIA);
+            return View(vm);
+        }
+        public JsonResult CalculateSuma(string Val1, string Val2, string Resp, Int32? EjercicioId)
         {
-            return View();
+            try {
+                var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
+                if (Val1 != ejercicio.Valor1 || Val2 != ejercicio.Valor2 || Resp != ejercicio.Resultado)
+                {
+                    var result = new
+                    {
+                        value = "false",
+                        mensaje = "La operacion es incorrecta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+                else {
+                    var result = new
+                    {
+                        value = "true",
+                        mensaje = "La operacion es correcta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex) {
+                return Json("false", JsonRequestBehavior.AllowGet);
+            }      
         }
+        public JsonResult CalculateResta(string Val1, string Val2, string Resp, Int32? EjercicioId)
+        {
 
-
-
-        public ActionResult Result()
+            try
+            {
+                var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
+                if (Val1 != ejercicio.Valor1 || Val2 != ejercicio.Valor2 || Resp != ejercicio.Resultado)
+                {
+                    var result = new
+                    {
+                        value = "false",
+                        mensaje = "La operacion es incorrecta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var result = new
+                    {
+                        value = "true",
+                        mensaje = "La operacion es correcta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json("false", JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult CalculateMultiplicacion(string Val1, string Val2, string Resp, Int32? EjercicioId)
         {
-            return View();
+
+            try
+            {
+                var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
+                if (Val1 != ejercicio.Valor1 || Val2 != ejercicio.Valor2 || Resp != ejercicio.Resultado)
+                {
+                    var result = new
+                    {
+                        value = "false",
+                        mensaje = "La operacion es incorrecta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var result = new
+                    {
+                        value = "true",
+                        mensaje = "La operacion es correcta"
+                    };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json("false", JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

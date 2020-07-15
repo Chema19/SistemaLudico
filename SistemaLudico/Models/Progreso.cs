@@ -16,7 +16,7 @@ namespace SistemaLudico.Models
     {
         public int ProgresoId { get; set; }
         public int ParticipanteId { get; set; }
-        public string EstadoProgreso { get; set; }
+        public Nullable<int> Nota { get; set; }
         public Nullable<int> EjercicioId { get; set; }
     
         public virtual Ejercicio Ejercicio { get; set; }
