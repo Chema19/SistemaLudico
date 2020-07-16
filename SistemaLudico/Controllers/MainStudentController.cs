@@ -22,6 +22,14 @@ namespace SistemaLudico.Controllers
             return RedirectToAction("Avatar", "MainStudent");
         }
 
+        [HttpPost]
+        public ActionResult LogIn(LoginStudentViewModel model)
+        {
+            LoginStudentViewModel wm = new LoginStudentViewModel();
+            wm.LogIn(CargarDatosContext(), model);
+            return RedirectToAction("Avatar", "MainStudent");
+        }
+
         public ActionResult Avatar()
         {
             return View();

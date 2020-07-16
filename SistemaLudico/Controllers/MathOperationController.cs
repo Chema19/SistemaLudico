@@ -39,6 +39,7 @@ namespace SistemaLudico.Controllers
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);
             return View(vm);
         }
+
         public ActionResult Result(Int32? EjercicioId, Int32? Vidas)
         {
             ResultViewModel vm = new ResultViewModel();
@@ -50,6 +51,7 @@ namespace SistemaLudico.Controllers
             vm.FillResultLevelBIA(CargarDatosContext(), JuegoId, LevelBIA);
             return View(vm);
         }
+
         public JsonResult CalculateSuma(string Val1, string Val2, string Resp, Int32? EjercicioId)
         {
             try {

@@ -14,6 +14,9 @@ namespace SistemaLudico.ViewModels.MainStudent
         public string Nombre { set; get; }
         public string Apellido { set; get; }
         public string Codigo { set; get; }
+        public string NombreLogIn { set; get; }
+        public string CodigoLogIn { set; get; }
+
         HttpContext context = HttpContext.Current;
 
         public string Validacion(CargarDatosContext cd, LoginStudentViewModel model) {
@@ -21,9 +24,7 @@ namespace SistemaLudico.ViewModels.MainStudent
             {
                     Participante participante = new Participante();
                 if (cd.context.Participante.Any(x => x.Nombre == model.Nombre && x.Apellido == model.Apellido && x.Codigo == model.Codigo))
-                {
-                    participante = cd.context.Participante.FirstOrDefault(x => x.Nombre == model.Nombre && x.Apellido == model.Apellido && x.Codigo == model.Codigo);
-                    context.Session["PARTICIPANTEID"] = participante.ParticipanteId;
+                { 
                     return "Usuario ya registrado";
                 }
                 else
@@ -40,6 +41,25 @@ namespace SistemaLudico.ViewModels.MainStudent
                 }
             }
             catch (Exception ex) {
+                return ex.Message;
+            }
+        }
+
+        public string LogIn(CargarDatosContext cd, LoginStudentViewModel model) {
+            try
+            {
+                Participante participante = new Participante();
+                if (cd.context.Participante.Any(x => x.Nombre == model.NombreLogIn && x.Codigo == model.CodigoLogIn))
+                {
+                    participante = cd.context.Participante.FirstOrDefault(x => x.Nombre == model.NombreLogIn && x.Codigo == model.CodigoLogIn);
+                    context.Session["PARTICIPANTEID"] = participante.ParticipanteId;
+                    context.Session["NOMBRECOMPLETO"] = participante.Nombre + " " + participante.Apellido;
+                    return "Log In exitoso";
+                }
+                return "El usuario no se encuentra registrado";
+            }
+            catch (Exception ex)
+            {
                 return ex.Message;
             }
         }

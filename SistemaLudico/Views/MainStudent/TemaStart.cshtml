@@ -4,16 +4,15 @@
 
 <div class="row">
     <div class="col-lg-12">
-        @*<h1 style="text-align:center">Curso de matemática</h1>*@
     </div>
     <div class="row col-lg-12" style="margin-top:100px">
         <div class="col-lg-4">
             <img src="~/Content/assets/img/fig7.jpg" style="display: block;margin-left: auto;margin-right: auto;width:250px;height:350px" />
         </div>
         <div class="col-lg-8">
-            @*<img src="~/Content/assets/img/fig18.jpg" style="display: block;margin-left: auto;margin-right: auto;width:auto;height:300px" />*@
-            <iframe width="620" height="300" id="video"
-                    src="@Model.Tema.LinkYoutube"></iframe>
+            <video controls="controls" width="620" height="300" id="video">
+                <source src="@Url.Content(Model.Tema.LinkYoutube)" type="video/mp4" />
+            </video>
             <div class="row">
                 <div class="col-lg-6">
                     <a class="col-lg-6 button small" style="background-color:red; color:white" href="@Url.Action("Temas", "MainStudent", new { CursoId = Model.Tema.CursoId })">ATRAS</a>
@@ -26,12 +25,13 @@
         </div>
     </div>
 </div>
+
 @section scripts{
     <script>
         $('[data-start-class]').on('click', function () {
             $('[data-start-example]').removeAttr('hidden', 'hidden');
+            $('video').trigger('play');
             $('[data-start-class]').prop('hidden', 'hidden');
-            player.playVideo();
         });
     </script>
 }
