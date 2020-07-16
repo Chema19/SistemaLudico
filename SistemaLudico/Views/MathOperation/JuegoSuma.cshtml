@@ -207,16 +207,18 @@
         <script>
             var vida = 3;
             $('[data-validate]').on('click', function () {
-                var val1 = $('#val1reto')[0].children[0].id;
-                var val2 = $('#val2reto')[0].children[0].id;
-                var resp = $('#respreto1')[0].children[0].id;
-                var resp = $('#respreto2')[0].children[0].id;
+                debugger;
+                var val1 = $('#val1reto')[0].children[0] == undefined ? "" : $('#val1reto')[0].children[0].id;
+                var val2 = $('#val2reto')[0].children[0] == undefined ? "" : $('#val2reto')[0].children[0].id;
+                var resp = $('#respreto1')[0].children[0] == undefined ? "" : $('#respreto1')[0].children[0].id;
+                var resp2 = $('#respreto2')[0].children[0] == undefined ? "" : $('#respreto2')[0].children[0].id;
+                var resG = resp + resp2;
                 var ejercicioId = @Model.Ejercicio.EjercicioId
 
                     $.ajax({
                         url: '@Url.Action("CalculateSuma", "MathOperation")',
                         type: 'GET',
-                        data: { Val1: val1, Val2: val2, Resp: resp, EjercicioId: ejercicioId },
+                        data: { Val1: val1, Val2: val2, Resp: resG, EjercicioId: ejercicioId },
                         success: function (data) {
                             debugger;
                             if (data.value === "false") {
@@ -235,6 +237,7 @@
                                 $("[data-next]").removeAttr("hidden");
                                 $("[data-validate]").prop("hidden", "hidden");
                             }
+                            Swal.fire(data.mensaje);
                         }
                     });
             });
