@@ -23,6 +23,12 @@
         padding: 10px;
         border: 1px solid #aaaaaa;
     }
+    /*[data-stile-2] {
+        width: 100px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+    }*/
 
     .post-options {
         background-color: transparent !important;
@@ -146,8 +152,8 @@
         <br />
         <div class="grid grid-3-9  centered" style="margin-top:5px !important">
             <div class="grid-column">
-                <div id="trash" ondrop="dropTrash(event)" ondragover="allowDrop(event)">
-                    <img src="~/Content/assets/img/trash.png" width="40" height="100" class="center" />
+                <div id="trash" class="center" ondrop="dropTrash(event)" ondragover="allowDrop(event)" data-stile-2 style="border-radius: 12px;background-image: url('@Url.Content("/Content/assets/img/trash.png")');background-size: 140px 97px;height:97px">
+
                 </div>
             </div>
             <div class="grid-column widget-box" style="margin:15px;padding-top: 15px;padding-bottom: 15px;">
@@ -249,7 +255,10 @@
                 debugger;
                 ev.preventDefault();
                 var data = ev.dataTransfer.getData("text");
+
                 ev.target.appendChild(document.getElementById(data));
+                var eliminar = "#" + ev.currentTarget.id;
+                $(eliminar).empty();
             }
             function dropResponse(ev) {
           

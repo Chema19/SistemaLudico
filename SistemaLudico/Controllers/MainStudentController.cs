@@ -19,7 +19,7 @@ namespace SistemaLudico.Controllers
         {
             LoginStudentViewModel wm = new LoginStudentViewModel();
             wm.Validacion(CargarDatosContext(), model);
-            return RedirectToAction("Avatar", "MainStudent");
+            return RedirectToAction("Index", "MainStudent");
         }
 
         [HttpPost]
