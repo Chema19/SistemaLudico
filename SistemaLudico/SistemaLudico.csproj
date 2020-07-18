@@ -1149,22 +1149,14 @@
     <Content Include="Views\MainStudent\Index.cshtml" />
     <Content Include="Views\MainStudent\Avatar.cshtml" />
     <Content Include="Views\MainStudent\Cursos.cshtml" />
-    <Content Include="Views\MathProblem\Index.cshtml" />
-    <Content Include="Views\MathProblem\ProblenAditionStart.cshtml" />
     <Content Include="Views\MathProblem\Question1.cshtml" />
     <Content Include="Views\MathProblem\Question2.cshtml" />
     <Content Include="Views\MathProblem\Question3.cshtml" />
     <Content Include="Views\MathProblem\Question4.cshtml" />
     <Content Include="Views\MathProblem\Question5.cshtml" />
-    <Content Include="Views\MathProblem\Juego1.cshtml" />
-    <Content Include="Views\MathProblem\Juego2.cshtml" />
-    <Content Include="Views\MathProblem\Juego3.cshtml" />
-    <Content Include="Views\MathProblem\Juego4.cshtml" />
-    <Content Include="Views\MathProblem\Juego5.cshtml" />
     <Content Include="Views\MathProblem\Level.cshtml" />
     <Content Include="Views\MathProblem\Games.cshtml" />
     <Content Include="Views\MathProblem\Result.cshtml" />
-    <Content Include="Views\MathOperation\Index.cshtml" />
     <Content Include="Views\MathOperation\Level.cshtml" />
     <Content Include="Views\MathOperation\Games.cshtml" />
     <Content Include="Views\MainAdmin\_LayoutAdmin.cshtml" />
@@ -1177,11 +1169,6 @@
     <Content Include="Views\MainAdmin\EditarMaterial.cshtml" />
     <Content Include="Views\MainAdmin\AgregarEjercicio.cshtml" />
     <Content Include="Views\MainAdmin\EditarEjercicio.cshtml" />
-    <Content Include="Views\MathProblem\ProblenSustractionStart.cshtml" />
-    <Content Include="Views\Geometri\Index.cshtml" />
-    <Content Include="Views\Geometri\LineStart.cshtml" />
-    <Content Include="Views\Geometri\ShapeStart.cshtml" />
-    <Content Include="Views\Geometri\BodyStart.cshtml" />
     <Content Include="Views\Numeration\Index.cshtml" />
     <Content Include="Views\Numeration\OneToFiveStart.cshtml" />
     <Content Include="Views\Numeration\SixToTenStart.cshtml" />
@@ -1196,6 +1183,13 @@
     <Content Include="Views\MathProblem\ResultByTopic.cshtml" />
     <Content Include="Views\MathProblem\JuegoProblemasAditivos.cshtml" />
     <Content Include="Views\MathProblem\JuegoProblemaSustraccion.cshtml" />
+    <Content Include="Views\Geometri\Level.cshtml" />
+    <Content Include="Views\Geometri\Games.cshtml" />
+    <Content Include="Views\Geometri\JuegoPlanas.cshtml" />
+    <Content Include="Views\Geometri\JuegoLineas.cshtml" />
+    <Content Include="Views\Geometri\JuegoCuerpo.cshtml" />
+    <Content Include="Views\Geometri\Result.cshtml" />
+    <Content Include="Views\Geometri\ResultByTopic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

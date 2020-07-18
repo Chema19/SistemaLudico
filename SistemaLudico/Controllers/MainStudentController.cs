@@ -10,16 +10,18 @@ namespace SistemaLudico.Controllers
     public class MainStudentController : BaseController
     {
         // GET: MainStudent
-        public ActionResult Index()
+        public ActionResult Index(bool Registrado = false)
         {
-            return View();
+            LoginStudentViewModel wm = new LoginStudentViewModel();
+            wm.Fill(Registrado);
+            return View(wm);
         }
         [HttpPost]
         public ActionResult Index(LoginStudentViewModel model)
         {
             LoginStudentViewModel wm = new LoginStudentViewModel();
             wm.Validacion(CargarDatosContext(), model);
-            return RedirectToAction("Index", "MainStudent");
+            return RedirectToAction("Index", "MainStudent", new { Registrado = wm.Registrado });
         }
 
         [HttpPost]

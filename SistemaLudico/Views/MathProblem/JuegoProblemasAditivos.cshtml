@@ -23,6 +23,12 @@
         padding: 10px;
         border: 1px solid #aaaaaa;
     }
+    /*[data-stile-2] {
+        width: 100px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+    }*/
 
     .post-options {
         background-color: transparent !important;
@@ -36,7 +42,7 @@
 
 <h2>Juego1</h2>
 
-<div style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Problemas_Aditivos.jpg")');height:780px">
+<div style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Problemas_Aditivos.png")');height:780px">
     <div class="grid grid-4-4-4 centered">
         <div class="grid-column">
             <div class="post-options" style="margin-top:20px" data-vidas>
@@ -63,63 +69,63 @@
         <br />
         <div class="grid grid-4-4-4 centered">
             <div class="grid-column">
-                <img src="@Url.Content("~/Content/assets/img/hombre.png")" width="385" height="300" />
+                <img src="@Url.Content("~/Content/assets/img/hombre.png")" width="385" height="300" style="margin:10px" />
             </div>
             <div class="grid-column">
-                <img src="@Url.Content(Model.Ejercicio.RutaImagen)" width="385" height="385" />
+                <img src="@Url.Content(Model.Ejercicio.RutaImagen)" width="385" height="250" style="margin-top:25%" />
             </div>
             <div class="grid-column">
                 <div class="widget-box" style="margin-right:15px">
                     <div class="post-options">
                         <div class="post-option">
-                            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="1" src="@Url.Content("~/Content/assets/img/uno.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div1" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-1" src="@Url.Content("~/Content/assets/img/uno.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                         <div class="post-option">
-                            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="2" src="@Url.Content("~/Content/assets/img/dos.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div2" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-2" src="@Url.Content("~/Content/assets/img/dos.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                         <div class="post-option">
-                            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="3" src="@Url.Content("~/Content/assets/img/tres.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="post-options">
-                        <div class="post-option">
-                            <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="4" src="@Url.Content("~/Content/assets/img/cuatro.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="5" src="@Url.Content("~/Content/assets/img/cinco.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="6" src="@Url.Content("~/Content/assets/img/seis.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div3" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-3" src="@Url.Content("~/Content/assets/img/tres.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                     </div>
                     <br />
                     <div class="post-options">
                         <div class="post-option">
-                            <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="7" src="@Url.Content("~/Content/assets/img/siete.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div4" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-4" src="@Url.Content("~/Content/assets/img/cuatro.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                         <div class="post-option">
-                            <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="8" src="@Url.Content("~/Content/assets/img/ocho.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div5" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-5" src="@Url.Content("~/Content/assets/img/cinco.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                         <div class="post-option">
-                            <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="9" src="@Url.Content("~/Content/assets/img/nueve.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div6" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-6" src="@Url.Content("~/Content/assets/img/seis.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="post-options">
+                        <div class="post-option">
+                            <div id="div7" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-7" src="@Url.Content("~/Content/assets/img/siete.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            </div>
+                        </div>
+                        <div class="post-option">
+                            <div id="div8" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-8" src="@Url.Content("~/Content/assets/img/ocho.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            </div>
+                        </div>
+                        <div class="post-option">
+                            <div id="div9" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-9" src="@Url.Content("~/Content/assets/img/nueve.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                     </div>
@@ -130,8 +136,8 @@
                             </div>
                         </div>
                         <div class="post-option">
-                            <div id="div0" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="0" src="@Url.Content("~/Content/assets/img/cero.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div id="div0" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                <img id="val-0" src="@Url.Content("~/Content/assets/img/cero.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
                             </div>
                         </div>
                         <div class="post-option">
@@ -144,14 +150,17 @@
         </div>
         <br />
         <br />
-        <div class="grid grid-3-9 centered" style="margin-top:5px !important">
+        <div class="grid grid-3-9  centered" style="margin-top:5px !important">
             <div class="grid-column">
+                <div id="trash" class="center" ondrop="dropTrash(event)" ondragover="allowDrop(event)" data-stile-2 style="border-radius: 12px;background-image: url('@Url.Content("/Content/assets/img/trash.png")');background-size: 140px 97px;height:97px">
+
+                </div>
             </div>
-            <div class="grid-column widget-box" style="margin-right:15px;padding-top: 15px;padding-bottom: 15px;">
-                <div class="post-options">
+            <div class="grid-column widget-box" style="margin:15px;padding-top: 15px;padding-bottom: 15px;">
+                <div class="post-options" style="padding:0px">
                     <div class="post-option">
                         <div id="value1">
-                            <div id="val1reto" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                            <div id="val1reto" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
                             </div>
                         </div>
                     </div>
@@ -160,7 +169,7 @@
                     </div>
                     <div class="post-option">
                         <div id="value2">
-                            <div id="val2reto" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                            <div id="val2reto" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
                             </div>
                         </div>
                     </div>
@@ -168,8 +177,12 @@
                         <img src="@Url.Content("~/Content/assets/img/igual.PNG")" width="70" height="60" />
                     </div>
                     <div class="post-option">
-                        <div id="response">
-                            <div id="respreto" ondrop="drop(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                        <div id="response" style="margin-right:20px">
+                            <div id="respreto1" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div id="response2" style="margin-right:30px">
+                            <div id="respreto2" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
                             </div>
                         </div>
                     </div>
@@ -194,15 +207,18 @@
     <script>
             var vida = 3;
             $('[data-validate]').on('click', function () {
-                var val1 = $('#val1reto')[0].children[0].id;
-                var val2 = $('#val2reto')[0].children[0].id;
-                var resp = $('#respreto')[0].children[0].id;
+                debugger;
+                var val1 = $('#val1reto')[0].children[0] == undefined ? "" : $('#val1reto')[0].children[0].id;
+                var val2 = $('#val2reto')[0].children[0] == undefined ? "" : $('#val2reto')[0].children[0].id;
+                var resp = $('#respreto1')[0].children[0] == undefined ? "" : $('#respreto1')[0].children[0].id;
+                var resp2 = $('#respreto2')[0].children[0] == undefined ? "" : $('#respreto2')[0].children[0].id;
+                var resG = resp + resp2;
                 var ejercicioId = @Model.Ejercicio.EjercicioId
 
                     $.ajax({
                         url: '@Url.Action("CalculateProblemaAditivo", "MathProblem")',
                         type: 'GET',
-                        data: { Val1: val1, Val2: val2, Resp: resp, EjercicioId: ejercicioId },
+                        data: { Val1: val1, Val2: val2, Resp: resG, EjercicioId: ejercicioId },
                         success: function (data) {
                             debugger;
                             if (data.value === "false") {
@@ -217,30 +233,62 @@
                                 }
                                 $('[data-vidas]').empty();
                                 $('[data-vidas]').append(vidas);
+                                Swal.fire(
+                                    data.mensaje,
+                                    '',
+                                    'error'
+                                )
                             } else {
                                 $("[data-next]").removeAttr("hidden");
                                 $("[data-validate]").prop("hidden", "hidden");
+                                Swal.fire(
+                                    data.mensaje,
+                                    '',
+                                    'success'
+                                )
                             }
+
                         }
                     });
             });
 
             $('[data-next]').on('click', function () {
-                window.location.href = "http://localhost:53995/MathProblem/Result?EjercicioId=" + @Model.Ejercicio.EjercicioId + "&Vidas=" + vida;
+                window.location.href = "http://localhost:53995/MathOperation/Result?EjercicioId=" + @Model.Ejercicio.EjercicioId + "&Vidas=" + vida;
             });
 
-        function allowDrop(ev) {
-            ev.preventDefault();
-        }
+            var lastShape;
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+            function drag(ev) {
+                lastShape = ev.currentTarget.parentElement.id;
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+            function dropTrash(ev) {
+                debugger;
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
 
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
-
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
+                //ev.target.appendChild(document.getElementById(data));
+                var eliminar = "#" + ev.currentTarget.id;
+                $(eliminar).empty();
+                if (lastShape === 'val1reto' || lastShape === 'val2reto' || lastShape === 'respreto1' || lastShape === 'respreto2') {
+                    var id = '#' + lastShape;
+                    $(id).empty();
+                }
+            }
+            function dropResponse(ev) {
+                debugger;
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                var clone = document.getElementById(data).outerHTML.replace('val-', '');
+                var destino = "#" + ev.currentTarget.id;
+                $(destino).empty();
+                $(destino).append(clone)
+                if (lastShape === 'val1reto' || lastShape === 'val2reto' || lastShape === 'respreto1' ||  lastShape === 'respreto2') {
+                    var id = '#' + lastShape;
+                    $(id).empty();
+                }
+            }
     </script>
 }

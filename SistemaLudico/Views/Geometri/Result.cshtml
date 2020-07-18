@@ -1,0 +1,42 @@
+﻿@model SistemaLudico.ViewModels.MainStudent.ResultViewModel
+@{
+    ViewBag.Title = "Result";
+}
+
+
+<div style="background-image: url('@Url.Content("../../Content/assets/img/fig16.jpg")');height:780px">
+
+
+    <div data-reto>
+        <br />
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <h1 style="text-align:center; color:black"> Resultado del Juego </h1>
+            </div>
+        </div>
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+            </div>
+            <div class="grid-column">
+                <img src="@Url.Content("~/Content/assets/img/fig4.PNG")" width="385" height="385" />
+            </div>
+            <div class="grid-column">
+            </div>
+        </div>
+        <br />
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <h1 style="text-align:center; color:black"> @Model.MensajeFinal </h1>
+            </div>
+        </div>
+        <div class="grid grid-4-4-4 centered">
+            <div class="grid-column">
+                <a class="btn" style="background-color:green;  color:white" href="@Url.Action("Games", "Geometri", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
+                    Pasar al siguiente Juego
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

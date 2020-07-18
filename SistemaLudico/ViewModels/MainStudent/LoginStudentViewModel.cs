@@ -16,16 +16,21 @@ namespace SistemaLudico.ViewModels.MainStudent
         public string Codigo { set; get; }
         public string NombreLogIn { set; get; }
         public string CodigoLogIn { set; get; }
+        public bool Registrado { set; get; }
 
         HttpContext context = HttpContext.Current;
 
-        public string Validacion(CargarDatosContext cd, LoginStudentViewModel model) {
+        public void Fill(bool registrado) {
+            this.Registrado = registrado;
+        }
+
+        public void Validacion(CargarDatosContext cd, LoginStudentViewModel model) {
             try
             {
-                    Participante participante = new Participante();
+                Participante participante = new Participante();
                 if (cd.context.Participante.Any(x => x.Nombre == model.Nombre && x.Apellido == model.Apellido && x.Codigo == model.Codigo))
                 { 
-                    return "Usuario ya registrado";
+                    this.Registrado = false;
                 }
                 else
                 {
@@ -37,11 +42,12 @@ namespace SistemaLudico.ViewModels.MainStudent
                     participante.FechaCreacion = DateTime.Now;
                     cd.context.SaveChanges();
 
-                    return "Usuario registrado";
+
+                    this.Registrado = true;
                 }
             }
             catch (Exception ex) {
-                return ex.Message;
+                throw new Exception( ex.Message);
             }
         }
 
