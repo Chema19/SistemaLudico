@@ -1169,9 +1169,6 @@
     <Content Include="Views\MainAdmin\EditarMaterial.cshtml" />
     <Content Include="Views\MainAdmin\AgregarEjercicio.cshtml" />
     <Content Include="Views\MainAdmin\EditarEjercicio.cshtml" />
-    <Content Include="Views\Numeration\Index.cshtml" />
-    <Content Include="Views\Numeration\OneToFiveStart.cshtml" />
-    <Content Include="Views\Numeration\SixToTenStart.cshtml" />
     <Content Include="Views\MainStudent\AvatarPersonaje.cshtml" />
     <Content Include="Views\MathOperation\JuegoSuma.cshtml" />
     <Content Include="Views\MainStudent\Temas.cshtml" />
@@ -1190,6 +1187,12 @@
     <Content Include="Views\Geometri\JuegoCuerpo.cshtml" />
     <Content Include="Views\Geometri\Result.cshtml" />
     <Content Include="Views\Geometri\ResultByTopic.cshtml" />
+    <Content Include="Views\Numeration\Level.cshtml" />
+    <Content Include="Views\Numeration\Games.cshtml" />
+    <Content Include="Views\Numeration\Juego1to5.cshtml" />
+    <Content Include="Views\Numeration\Juego6to10.cshtml" />
+    <Content Include="Views\Numeration\Result.cshtml" />
+    <Content Include="Views\Numeration\ResultByTopic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

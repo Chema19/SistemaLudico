@@ -47,12 +47,12 @@ namespace SistemaLudico.Controllers
             return View(vm);
         }
 
-        public JsonResult CalculatePlana(string Val1, string Val2, string Resp, Int32? EjercicioId)
+        public JsonResult Calculate1to5(string Resp, Int32? EjercicioId)
         {
             try
             {
                 var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
-                if (Val1 != ejercicio.Valor1 || Val2 != ejercicio.Valor2 || Resp != ejercicio.Resultado)
+                if (Resp != ejercicio.Resultado)
                 {
                     var result = new
                     {
@@ -76,13 +76,13 @@ namespace SistemaLudico.Controllers
                 return Json("false", JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult CalculateLinea(string Val1, string Val2, string Resp, Int32? EjercicioId)
+        public JsonResult Calculate6to10(string Resp, Int32? EjercicioId)
         {
 
             try
             {
                 var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
-                if (Val1 != ejercicio.Valor1 || Val2 != ejercicio.Valor2 || Resp != ejercicio.Resultado)
+                if (Resp != ejercicio.Resultado)
                 {
                     var result = new
                     {
