@@ -16,15 +16,21 @@ namespace SistemaLudico.ViewModels.MainAdmin
         public string Contrasenia { set; get; }
         public string UsuarioLogIn { set; get; }
         public string ContraseniaLogIn { set; get; }
+        public bool? Created { set; get; } = true;
 
         HttpContext context = HttpContext.Current;
+
+        public void Fill(bool? created) {
+            this.Created = created;
+        }
 
         public Tuple<bool, string> Registrar(CargarDatosContext cd, LoginRegisterViewModel model)
         {
             try {
                 using (var ts = new TransactionScope()) {
                     if (cd.context.Administrador.Any(x => x.Contrasenia == model.Contrasenia && x.Usuario == model.Usuario)) {
-                        return Tuple.Create(false, "Cuentea de usuario ya existente");
+                        this.Created = false;
+                        return Tuple.Create(false, "Cuenta de usuario ya existente");
                     }
                     else {
                         Administrador administrador = new Administrador();
@@ -38,11 +44,12 @@ namespace SistemaLudico.ViewModels.MainAdmin
                         cd.context.SaveChanges();
                     }
                     ts.Complete();
-
+                    this.Created = true;
                     return Tuple.Create(true, "Registro de usuario admistrador exitoso");
                 }
             }
             catch (Exception ex) {
+                this.Created = false;
                 return Tuple.Create(false, ex.Message);
             }
         }

@@ -50,7 +50,7 @@
                 {
                     <div class="row">
                         <div class="col-lg-8">
-                            <a class="button small col-lg-12" data-style style="background-color:blue;color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("TemaStart", "MainStudent", new { TemaId = item.TemaId })">@item.Nombre</a>
+                            <a class="button small col-lg-12" data-style style="background-color:blue;color:white;font-size: 20px;font-weight: bold;" href="@(item.TemaId != 3 ?  Url.Action("TemaStart", "MainStudent", new { TemaId = item.TemaId }) : Url.Action("Question1", "MathProblem",new { TemaId = item.TemaId }))">@item.Nombre</a>
                         </div>
                         <div class="col-lg-4">
                             <div class="row">

@@ -1,4 +1,5 @@
-﻿using SistemaLudico.ViewModels.MainAdmin;
+﻿using SistemaLudico.Helpers;
+using SistemaLudico.ViewModels.MainAdmin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,42 @@ namespace SistemaLudico.Controllers
     public class MainAdminController : BaseController
     {
         // GET: MainAdmin
-        public ActionResult Login()
+        public ActionResult Login(bool? Created)
         {
-            return View();
+            LoginRegisterViewModel vm = new LoginRegisterViewModel();
+            vm.Fill(Created);
+            return View(vm);
         }
         [HttpPost]
         public ActionResult Login(LoginRegisterViewModel model)
         {
             LoginRegisterViewModel vm = new LoginRegisterViewModel();
-            vm.LogIn(CargarDatosContext(), model);
-            return RedirectToAction("Index", "MainAdmin");
+            var mensaje = vm.LogIn(CargarDatosContext(), model);
+            if (mensaje.Item1 == false)
+            {
+                PostMessage(MessageType.Warning, mensaje.Item2);
+                return RedirectToAction("Login", "MainAdmin");
+            }
+            else
+            {
+                PostMessage(MessageType.Success, mensaje.Item2);
+                return RedirectToAction("Index", "MainAdmin");
+            }
+           
         }
         [HttpPost]
         public ActionResult Register(LoginRegisterViewModel model)
         {
             LoginRegisterViewModel vm = new LoginRegisterViewModel();
-            vm.Registrar(CargarDatosContext(), model);
-            return View(vm);
+            var mensaje = vm.Registrar(CargarDatosContext(), model);
+            if (mensaje.Item1 == false)
+            {
+                PostMessage(MessageType.Warning, mensaje.Item2);
+            }
+            else {
+                PostMessage(MessageType.Success, mensaje.Item2);
+            }
+            return RedirectToAction("Login", "MainAdmin", new { Created = vm.Created });
         }
         public ActionResult Index()
         {

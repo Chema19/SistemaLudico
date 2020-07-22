@@ -115,25 +115,35 @@ namespace SistemaLudico.Controllers
             return View(vm);
         }
 
-        public ActionResult Question1()
+        public ActionResult Question1(Int32? TemaId)
         {
-            return View();
+            QuestionViewModel vm = new QuestionViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
         }
-        public ActionResult Question2()
+        public ActionResult Question2(Int32? TemaId)
         {
-            return View();
+            QuestionViewModel vm = new QuestionViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
         }
-        public ActionResult Question3()
+        public ActionResult Question3(Int32? TemaId)
         {
-            return View();
+            QuestionViewModel vm = new QuestionViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
         }
-        public ActionResult Question4()
+        public ActionResult Question4(Int32? TemaId)
         {
-            return View();
+            QuestionViewModel vm = new QuestionViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
         }
-        public ActionResult Question5()
+        public ActionResult Question5(Int32? TemaId)
         {
-            return View();
+            QuestionViewModel vm = new QuestionViewModel();
+            vm.Fill(CargarDatosContext(), TemaId);
+            return View(vm);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainStudent.QuestionViewModel
 @{
     ViewBag.Title = "Question4";
 }
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-lg-4">
                     <a class="col-lg-10 button small" data-start-box style="background-color:cadetblue; color:white" hidden="hidden" data-answer-box>HABILITAR CUADRO PREGUNTA</a>
-                    <a class="col-lg-10 button small" data-next style="background-color:forestgreen; color:white" hidden="hidden" data-answer-box  href="@Url.Action("Question5","MathProblem")">SIGUIENTE</a>
+                    <a class="col-lg-10 button small" data-next style="background-color:forestgreen; color:white" hidden="hidden" data-answer-box href="@Url.Action("Question5","MathProblem", new {TemaId = Model.TemaId  })">SIGUIENTE</a>
                 </div>
             </div>
         </div>
