@@ -3,120 +3,140 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        @*<h1 style="text-align:center">Curso de matemática</h1>*@
-    </div>
-    <div class="row col-lg-12" style="margin-top:100px">
-        <div class="col-lg-6">
-            <img src="@Url.Content("~/Content/assets/img/fig9.jpg")" style="display: block;margin-left: auto;margin-right: auto;width:450px;height:450px" />
-        </div>
-        <div class="col-lg-6">
-            <h2 class="header-title" style="text-align:center;font-weight: bold;">!A COMENZAR EL JUEGO GRAN RETO MATEMÁTICO¡</h2>
-            <br />
-            <div class="row" @(Model.Registrado == false ? "" : "hidden") data-register>
-                <div class="col-lg-12">
-                    <h2 style="text-align:center;font-weight: bold;margin-bottom:10px;">Registrar usuario</h2>
-                    <br />
-                    <form method="post" action="@Url.Action("Index","MainStudent")">
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
 
-                        <div class="form-group mb-3">
-                            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su nombre</h4>
-                            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
-                        </div>
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .centervertical {
+        margin: 0;
+        position: absolute;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+</style>
 
-                        <div class="form-group mb-3">
-                            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su apellido</h4>
-                            @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su codigo de alumno</h4>
-                            @Html.TextBoxFor(x => x.Codigo, new { @class = "form-control" })
-                        </div>
-                        <br />
-                        <div class="form-group mb-3">
-                            <button type="submit" class="button small" style="background-color:red" data-registrar>Guardar</button>
-                        </div>
-                    </form>
-                </div>
-                <a class="btn" data-gologin style="color:blue;font-size:20px;text-decoration-line:underline; text-align:center"> Ya estoy registrado ir a log in</a>
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Login.png")');">
+    <div class="row">
+        <div class="row col-lg-12 centervertical" style="margin-top:100px">
+            <div class="col-lg-6">
+                <img src="@Url.Content("~/Content/assets/img/gift/6.gif")" style="display: block;margin-left: auto;margin-right: auto;width:450px;height:450px"/>>
             </div>
-            <div class="row" @(Model.Registrado == false ? "hidden" : "") data-login>
-                <div class="col-lg-12">
-                    <h2 style="text-align:center;font-weight: bold;margin-bottom:10px;">Log In</h2>
-                    <br />
-                    <form method="post" action="@Url.Action("LogIn","MainStudent")">
-
-                        <div class="form-group mb-3">
-                            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su nombre</h4>
-                            @Html.TextBoxFor(x => x.NombreLogIn, new { @class = "form-control" })
-                        </div>
-
-
-                        <div class="form-group mb-3">
-                            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su codigo de alumno</h4>
-                            @Html.TextBoxFor(x => x.CodigoLogIn, new { @class = "form-control" })
-                        </div>
+            <div class="col-lg-6 card" style="opacity:0.9">
+                <h2 class="header-title" style="text-align:center;font-weight: bold;margin-top:20px">!A COMENZAR EL JUEGO GRAN RETO MATEMÁTICO¡</h2>
+                <br />
+                <div class="row" @(Model.Registrado == false ? "" : "hidden") data-register>
+                    <div class="col-lg-12">
+                        <h2 style="text-align:center;font-weight: bold;margin-bottom:10px;">Registrar usuario</h2>
                         <br />
-                        <div class="form-group mb-3">
-                            <button type="submit" class="button small" style="background-color:red">Ingresar</button>
-                        </div>
-                    </form>
+                        <form method="post" action="@Url.Action("Index","MainStudent")">
+
+                            <div class="form-group mb-3">
+                                <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su nombre</h4>
+                                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", Style="border-color:black" })
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su apellido</h4>
+                                @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control", Style = "border-color:black" })
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su codigo de alumno</h4>
+                                @Html.TextBoxFor(x => x.Codigo, new { @class = "form-control", Style = "border-color:black" })
+                            </div>
+                            <br />
+                            <div class="form-group mb-3">
+                                <button type="submit" class="button small" style="background-color:red;color:white; font-size: 20px;font-weight: bold;" data-registrar>Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a class="btn" data-gologin style="color:blue;font-size:20px;text-decoration-line:underline; text-align:center"> Ya estoy registrado ir a log in</a>
                 </div>
-                <a class="btn" data-goregister style="color:blue;font-size:20px;text-decoration-line:underline;text-align:center"> Registrarse</a>
+                <div class="row" @(Model.Registrado == false ? "hidden" : "") data-login>
+                    <div class="col-lg-12">
+                        <h2 style="text-align:center;font-weight: bold;margin-bottom:10px;">Log In</h2>
+                        <br />
+                        <form method="post" action="@Url.Action("LogIn","MainStudent")">
+
+                            <div class="form-group mb-3">
+                                <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su nombre</h4>
+                                @Html.TextBoxFor(x => x.NombreLogIn, new { @class = "form-control", Style = "border-color:black" })
+                            </div>
+
+
+                            <div class="form-group mb-3">
+                                <h4 for="simpleinput" style="font-weight: bold;margin-bottom:10px;">Ingrese su codigo de alumno</h4>
+                                @Html.TextBoxFor(x => x.CodigoLogIn, new { @class = "form-control", Style = "border-color:black" })
+                            </div>
+                            <br />
+                            <div class="form-group mb-3">
+                                <button type="submit" class="button small" style="background-color:red">Ingresar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <a class="btn" data-goregister style="color:blue;font-size:20px;text-decoration-line:underline;text-align:center"> Registrarse</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-@section scripts{
-    <script>
-        $('[data-gologin]').on('click', function () {
-            $('[data-register]').prop('hidden','hidden');
-            $('[data-login]').removeAttr('hidden', 'hidden');
-        });
-        $('[data-goregister]').on('click', function () {
-            $('[data-login]').prop('hidden', 'hidden');
-            $('[data-register]').removeAttr('hidden', 'hidden');
-        });
+    @section scripts{
+        <script>
+            $('[data-gologin]').on('click', function () {
+                $('[data-register]').prop('hidden', 'hidden');
+                $('[data-login]').removeAttr('hidden', 'hidden');
+            });
+            $('[data-goregister]').on('click', function () {
+                $('[data-login]').prop('hidden', 'hidden');
+                $('[data-register]').removeAttr('hidden', 'hidden');
+            });
 
-        $('[data-registrar]').on('click', function (e) {
-            debugger;
-            if ($('#Nombre').val() === "") {
+            $('[data-registrar]').on('click', function (e) {
+                debugger;
+                if ($('#Nombre').val() === "") {
+                    Swal.fire(
+                        'Complete el campo nombre',
+                        '',
+                        'error'
+                    )
+                    e.preventDefault()
+                    return false;
+                }
+                if ($('#Apellido').val() === "") {
+                    Swal.fire(
+                        'Complete el campo apellido',
+                        '',
+                        'error'
+                    )
+                    e.preventDefault()
+                    return false;
+                }
+                if ($('#Codigo').val() === "") {
+                    Swal.fire(
+                        'Complete el campo código',
+                        '',
+                        'error'
+                    )
+                    e.preventDefault()
+                    return false;
+                }
                 Swal.fire(
-                    'Complete el campo nombre',
-                    '',
-                    'error'
+                    'Registro exitoso',
+                    'Espere un momento a que refresque la página',
+                    'success'
                 )
-                e.preventDefault()
-                return false;
-            }
-            if ($('#Apellido').val() === "") {
-                Swal.fire(
-                    'Complete el campo apellido',
-                    '',
-                    'error'
-                )
-                e.preventDefault()
-                return false;
-            }
-            if ($('#Codigo').val() === "") {
-                Swal.fire(
-                    'Complete el campo código',
-                    '',
-                    'error'
-                )
-                e.preventDefault()
-                return false;
-            }
-            Swal.fire(
-                'Registro exitoso',
-                'Espere un momento a que refresque la página',
-                'success'
-            )
-            $(this).submit();
-        });
+                $(this).submit();
+            });
 
-    </script>    
+        </script>
     }

@@ -193,8 +193,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainAdmin\CursoViewModel.cs" />
+    <Compile Include="ViewModels\MainAdmin\LoginRegisterViewModel.cs" />
     <Compile Include="ViewModels\MainAdmin\TemaViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\CursosStudentViewModel.cs" />
+    <Compile Include="ViewModels\MainAdmin\EjercicioViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\LevelViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\LoginStudentViewModel.cs" />
     <Compile Include="ViewModels\MainStudent\TemaCursoViewModel.cs" />
@@ -818,6 +820,8 @@
     <Content Include="Content\assets\img\Fondos\Fondo_Suma.jpg" />
     <Content Include="Content\assets\img\Fondos\Fondo_Suma.png" />
     <Content Include="Content\assets\img\Fondos\Fondo_Temas.jpg" />
+    <Content Include="Content\assets\img\gift\2.gif" />
+    <Content Include="Content\assets\img\gift\6.gif" />
     <Content Include="Content\assets\img\hombre.png" />
     <Content Include="Content\assets\img\iconos\avatar.jpg" />
     <Content Include="Content\assets\img\iconos\borrador.jpeg" />
@@ -1193,14 +1197,13 @@
     <Content Include="Views\Numeration\Juego6to10.cshtml" />
     <Content Include="Views\Numeration\Result.cshtml" />
     <Content Include="Views\Numeration\ResultByTopic.cshtml" />
+    <Content Include="Views\MainAdmin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\File\" />
     <Folder Include="Files\Curso\" />
     <Folder Include="Files\Tema\" />
-    <Folder Include="ViewModels\MathOperation\" />
-    <Folder Include="ViewModels\MathProblem\" />
     <Folder Include="Views\BaseController\" />
   </ItemGroup>
   <ItemGroup>

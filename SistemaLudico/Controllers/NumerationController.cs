@@ -21,13 +21,13 @@ namespace SistemaLudico.Controllers
             vm.Fill(CargarDatosContext(), TemaId, LevelBIA);
             return View(vm);
         }
-        public ActionResult Juego1to5(Int32? TemaId, String LevelGame)
+        public ActionResult Juego1to5(Int32? TemaId, Int32? LevelGame)
         {
             JuegoViewModel vm = new JuegoViewModel();
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);
             return View(vm);
         }
-        public ActionResult Juego6to10(Int32? TemaId, String LevelGame)
+        public ActionResult Juego6to10(Int32? TemaId, Int32? LevelGame)
         {
             JuegoViewModel vm = new JuegoViewModel();
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);

@@ -10,7 +10,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 30%;
     }
 
     .row {
@@ -38,144 +38,165 @@
     .post-option:hover {
         background-color: transparent !important;
     }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: relative;
+        top: 45%;
+        -ms-transform: translateY(-45%);
+        transform: translateY(-45%);
+    }
 </style>
 
-<h2>Juego1</h2>
 
-<div style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Suma.png")');height:780px">
-    <div class="grid grid-4-4-4 centered">
-        <div class="grid-column">
-            <div class="post-options" style="margin-top:20px" data-vidas>
-                @for (int i = 0; i < vidas; i++)
-                {
-                    <div class="post-option">
-                        <img src="@Url.Content("~/Content/assets/img/corazon.png")" width="70" height="70" />
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="grid-column">
-        </div>
-        <div class="grid-column">
-        </div>
-    </div>
-
-    <div data-reto>
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Suma.png")');">
+    <div class="centervertical">
         <div class="grid grid-4-4-4 centered">
             <div class="grid-column">
-                <h1 style="text-align:center; color:black"> RETO @Model.Ejercicio.LevelGame</h1>
+                <div class="post-options" style="margin-top:20px" data-vidas>
+                    @for (int i = 0; i < vidas; i++)
+                    {
+                        <div class="post-option">
+                            <img src="@Url.Content("~/Content/assets/img/corazon.png")" width="70" height="70" />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="grid-column">
+            </div>
+            <div class="grid-column">
             </div>
         </div>
-        <br />
-        <div class="grid grid-4-4-4 centered">
-            <div class="grid-column">
-                <img src="@Url.Content("~/Content/assets/img/hombre.png")" width="385" height="300" style="margin:10px" />
+
+        <div data-reto>
+            <div class="grid grid-4-4-4 centered">
+                <div class="grid-column">
+                    <h1 style="text-align:center; color:black"> RETO @Model.Ejercicio.LevelGame</h1>
+                </div>
             </div>
-            <div class="grid-column">
-                <img src="@Url.Content(Model.Ejercicio.RutaImagen)" width="385" height="280" />
-            </div>
-            <div class="grid-column">
-                <div class="widget-box" style="margin-right:15px">
-                    <div class="post-options">
-                        <div class="post-option">
-                            <div id="div1" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-1" src="@Url.Content("~/Content/assets/img/uno.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+            <br />
+            <div class="grid grid-4-4-4 centered">
+                <div class="grid-column">
+                    <img src="@Url.Content("~/Content/assets/img/hombre.png")" width="385" height="300" style="margin-top:15%;transform:translateX(-15%)" />
+                </div>
+                <div class="grid-column">
+                    <img src="@Url.Content(Model.Ejercicio.RutaImagen)" width="385" height="280" style="margin-top:15%;transform:translateX(-10%)" />
+                </div>
+                <div class="grid-column">
+                    <div class="widget-box" style="margin-right:15px">
+                        <div class="post-options">
+                            <div class="post-option">
+                                <div id="div1" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-1" src="@Url.Content("~/Content/assets/img/uno.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div2" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-2" src="@Url.Content("~/Content/assets/img/dos.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div3" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-3" src="@Url.Content("~/Content/assets/img/tres.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
                             </div>
                         </div>
-                        <div class="post-option">
-                            <div id="div2" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-2" src="@Url.Content("~/Content/assets/img/dos.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                        <br />
+                        <div class="post-options">
+                            <div class="post-option">
+                                <div id="div4" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-4" src="@Url.Content("~/Content/assets/img/cuatro.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div5" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-5" src="@Url.Content("~/Content/assets/img/cinco.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div6" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-6" src="@Url.Content("~/Content/assets/img/seis.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
                             </div>
                         </div>
-                        <div class="post-option">
-                            <div id="div3" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-3" src="@Url.Content("~/Content/assets/img/tres.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                        <br />
+                        <div class="post-options">
+                            <div class="post-option">
+                                <div id="div7" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-7" src="@Url.Content("~/Content/assets/img/siete.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div8" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-8" src="@Url.Content("~/Content/assets/img/ocho.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
+                            </div>
+                            <div class="post-option">
+                                <div id="div9" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-9" src="@Url.Content("~/Content/assets/img/nueve.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <div class="post-options">
-                        <div class="post-option">
-                            <div id="div4" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-4" src="@Url.Content("~/Content/assets/img/cuatro.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                        <br />
+                        <div class="post-options">
+                            <div class="post-option">
+                                <div id="div1">
+                                </div>
                             </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div5" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-5" src="@Url.Content("~/Content/assets/img/cinco.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                            <div class="post-option">
+                                <div id="div0" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                    <img id="val-0" src="@Url.Content("~/Content/assets/img/cero.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div6" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-6" src="@Url.Content("~/Content/assets/img/seis.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="post-options">
-                        <div class="post-option">
-                            <div id="div7" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-7" src="@Url.Content("~/Content/assets/img/siete.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div8" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-8" src="@Url.Content("~/Content/assets/img/ocho.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div9" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-9" src="@Url.Content("~/Content/assets/img/nueve.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div class="post-options">
-                        <div class="post-option">
-                            <div id="div1">
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div0" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
-                                <img id="val-0" src="@Url.Content("~/Content/assets/img/cero.png")" width="70" height="70" draggable="true" ondragstart="drag(event)" />
-                            </div>
-                        </div>
-                        <div class="post-option">
-                            <div id="div1">
+                            <div class="post-option">
+                                <div id="div1">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <div class="grid grid-3-9  centered" style="margin-top:5px !important">
-            <div class="grid-column">
-                <div id="trash" class="center" ondrop="dropTrash(event)" ondragover="allowDrop(event)" data-stile-2 style="border-radius: 12px;background-image: url('@Url.Content("/Content/assets/img/trash.png")');background-size: 140px 97px;height:97px">
+            <br />
+            <br />
+            <div class="grid grid-3-9  centered" style="margin-top:5px !important">
+                <div class="grid-column">
+                    <div id="trash" class="center" ondrop="dropTrash(event)" ondragover="allowDrop(event)" data-stile-2 style="border-radius: 12px;background-image: url('@Url.Content("/Content/assets/img/trash.png")');background-size: 140px 97px;height:97px">
 
-                </div>
-            </div>
-            <div class="grid-column widget-box" style="margin:15px;padding-top: 15px;padding-bottom: 15px;">
-                <div class="post-options" style="padding:0px">
-                    <div class="post-option" style="width: 300px;">
-                        <div id="response" style="margin-right:20px">
-                            <h3>Seleccion y arrastre la figura correcta</h3>
-                        </div>
                     </div>
-                    <div class="post-option">
-                        <div id="response" style="margin-right:20px" class="center">
-                            <div id="respreto1" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                </div>
+                <div class="grid-column widget-box" style="margin:15px;padding-top: 15px;padding-bottom: 15px;">
+                    <div class="post-options" style="padding:0px">
+                        <div class="post-option" style="width: 300px;">
+                            <div id="response" style="margin-right:20px">
+                                <h3>Seleccion y arrastre la figura correcta</h3>
                             </div>
                         </div>
-                    </div>
-                    <div class="post-option">
-                        <a class="btn" style="background-color:orange;  color:white" data-validate>
-                            Verificar Respuesta
-                        </a>
-                        <a class="btn" style="background-color:green;  color:white" hidden="hidden" data-next>
-                            Resultado
-                        </a>
+                        <div class="post-option">
+                            <div id="response" style="margin-right:20px" class="center">
+                                <div id="respreto1" ondrop="dropResponse(event)" ondragover="allowDrop(event)" data-stile style="border-radius: 12px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-option">
+                            <a class="btn" style="background-color:orange;  color:white;font-size: 20px;font-weight: bold;" data-validate>
+                                Verificar Respuesta
+                            </a>
+                            <a class="btn" style="background-color:green;  color:white;font-size: 20px;font-weight: bold;" hidden="hidden" data-next>
+                                Resultado
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,11 +204,25 @@
     </div>
 </div>
 
+<audio id="fondomusic" controls="controls" autoplay="autoplay" hidden>
+    <source src="@Url.Content("~/Content/assets/img/music/Canci%c3%b3n%20de%20Super%20Mario%20Bros.%20(192%20%20kbps).mp3")" type="audio/mpeg" />
+</audio>
 
 
 
 @section scripts{
     <script>
+
+         var audioElementCorrecto = document.createElement('audio');
+        var audioElementIncorrecto = document.createElement('audio');
+        var audioElementGameOver = document.createElement('audio');
+
+        audioElementCorrecto.setAttribute('src', '@Url.Content("~/Content/assets/img/music/Ni%c3%b1os%20Gritan%20Yay!!!%20(Efecto%20de%20Sonido)%20(192%20%20kbps)%20(1).mp3")');
+        audioElementIncorrecto.setAttribute('src', '@Url.Content("~/Content/assets/img/music/Respuesta%20incorrecta%20(Efecto%20de%20Sonido)%20Wrong%20Buzzer%20%20Sound%20Effect%20(192%20%20kbps).mp3")');
+        audioElementGameOver.setAttribute('src', '@Url.Content("~/Content/assets/img/music/Super%20Mario%20Game%20over%20sound%20effect%20(Origianl)%20(192%20%20kbps).mp3")');
+
+
+
             var vida = 3;
             $('[data-validate]').on('click', function () {
                 debugger;
@@ -213,6 +248,28 @@
                                 }
                                 $('[data-vidas]').empty();
                                 $('[data-vidas]').append(vidas);
+
+                                
+                                 if (vida == 0) {
+
+                                    var audioplayer = document.getElementById("fondomusic");
+                                    audioplayer.pause();
+                                    audioElementGameOver.play();
+                                    Swal.fire(
+                                        "No le quedan vidas :( ",
+                                        '',
+                                        'error'
+                                    )
+                                    
+                                    setTimeout(function () {
+                                        window.location.href = "http://localhost:53995/Numeration/Games?TemaId=@Model.TemaId&LevelBIA=@Model.LevelBIA";
+                                    }, 4000);
+                                    e.preventDefault();
+                                    return false;
+                                }
+                                audioElementIncorrecto.play();
+
+
                                 Swal.fire(
                                     data.mensaje,
                                     '',
@@ -221,6 +278,7 @@
                             } else {
                                 $("[data-next]").removeAttr("hidden");
                                 $("[data-validate]").prop("hidden", "hidden");
+                                audioElementCorrecto.play();
                                 Swal.fire(
                                     data.mensaje,
                                     '',
@@ -233,7 +291,7 @@
             });
 
             $('[data-next]').on('click', function () {
-                window.location.href = "http://localhost:53995/MathOperation/Result?EjercicioId=" + @Model.Ejercicio.EjercicioId + "&Vidas=" + vida;
+                window.location.href = "http://localhost:53995/Numeration/Result?EjercicioId=" + @Model.Ejercicio.EjercicioId + "&Vidas=" + vida;
             });
 
             var lastShape;

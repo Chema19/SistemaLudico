@@ -10,6 +10,24 @@ namespace SistemaLudico.Controllers
     public class MainAdminController : BaseController
     {
         // GET: MainAdmin
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginRegisterViewModel model)
+        {
+            LoginRegisterViewModel vm = new LoginRegisterViewModel();
+            vm.LogIn(CargarDatosContext(), model);
+            return RedirectToAction("Index", "MainAdmin");
+        }
+        [HttpPost]
+        public ActionResult Register(LoginRegisterViewModel model)
+        {
+            LoginRegisterViewModel vm = new LoginRegisterViewModel();
+            vm.Registrar(CargarDatosContext(), model);
+            return View(vm);
+        }
         public ActionResult Index()
         {
             return View();
@@ -50,8 +68,8 @@ namespace SistemaLudico.Controllers
             }
             if (model.RutaAudio != null)
             {
-                var validateMp3 = model.RutaAudio.FileName.Substring(model.RutaAudio.FileName.LastIndexOf('.')).ToLower();
-                if (!validateMp3.Equals(".mp3"))
+                var validateMp4 = model.RutaAudio.FileName.Substring(model.RutaAudio.FileName.LastIndexOf('.')).ToLower();
+                if (!validateMp4.Equals(".mp4"))
                 {
                     CursoViewModel vm = new CursoViewModel();
                     vm.FillCurso(CargarDatosContext(), model.CursoId);
@@ -102,7 +120,7 @@ namespace SistemaLudico.Controllers
             if (model.RutaAudio != null)
             {
                 var validateMp3 = model.RutaAudio.FileName.Substring(model.RutaAudio.FileName.LastIndexOf('.')).ToLower();
-                if (!validateMp3.Equals(".mp3"))
+                if (!validateMp3.Equals(".mp4"))
                 {
                     TemaViewModel vm = new TemaViewModel();
                     vm.FillTema(CargarDatosContext(), model.TemaId);
@@ -118,15 +136,33 @@ namespace SistemaLudico.Controllers
         #region Ejercicios
         public ActionResult Ejercicios()
         {
-            return View();
+            EjercicioViewModel vm = new EjercicioViewModel();
+            vm.ListEjercicios(CargarDatosContext());
+            return View(vm);
         }
-        public ActionResult AgregarEjercicio()
+        public ActionResult EditarEjercicio(Int32? EjercicioId)
         {
-            return View();
+            EjercicioViewModel vm = new EjercicioViewModel();
+            vm.FillEjercicio(CargarDatosContext(), EjercicioId);
+            return View(vm);
         }
-        public ActionResult EditarEjercicio()
+        [HttpPost]
+        public ActionResult EditarEjercicio(EjercicioViewModel model)
         {
-            return View();
+            if (model.RutaImage != null)
+            {
+                IList<string> AllowedFileExtensions = new List<string> { ".png", ".jpg", ".jpeg" };
+                var validate = model.RutaImage.FileName.Substring(model.RutaImage.FileName.LastIndexOf('.')).ToLower();
+                if (!AllowedFileExtensions.Any(x=>x == validate))
+                {
+                    EjercicioViewModel vm = new EjercicioViewModel();
+                    vm.FillEjercicio(CargarDatosContext(), model.TemaId);
+                    return View(vm);
+                }
+            }
+            EjercicioViewModel temaViewModel = new EjercicioViewModel();
+            temaViewModel.EditarCurso(CargarDatosContext(), model);
+            return RedirectToAction("Ejercicios");
         }
         #endregion
         #region Usuario

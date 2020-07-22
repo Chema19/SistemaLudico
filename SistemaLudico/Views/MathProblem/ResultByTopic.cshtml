@@ -30,12 +30,31 @@
     .post-option:hover {
         background-color: transparent !important;
     }
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: relative;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
 </style>
 
-<div style="background-image: url('../../Content/assets/img/fig16.jpg');height:780px">
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Avatar.png")');">
 
 
-    <div data-reto>
+    <div data-reto class="centervertical">
         <br />
         <br />
         <div class="grid grid-4-4-4 centered">
@@ -48,7 +67,7 @@
             <div class="grid-column center">
                 <img src="@Url.Content("~/Content/assets/img/fig4.PNG")" width="385" height="385" />
             </div>
-            <div class="grid-column">
+            <div class="grid-column card" style="opacity:0.8;padding-top:40px;padding-bottom:40px">
                 @foreach (var item in Model.ListDetailNota)
                 {
                     <h1 style="text-align:center; color:black">
@@ -56,7 +75,7 @@
                     </h1>
                 }
                 <hr />
-                <h1 style="text-align:center; color:black"> @Model.MensajeFinal</h1>
+                <h1 style="text-align:center; color:black;font-size: 60px;font-weight: bold;"> @Model.MensajeFinal</h1>
             </div>
 
 
@@ -65,7 +84,7 @@
         <br />
         <div class="grid grid-4-4-4 centered">
             <div class="grid-column">
-                <a class="btn" style="background-color:orange;  color:black" href="@Url.Action("Games", "MathProblem", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
+                <a class="btn" style="background-color:orange;  color:black;font-size: 20px;font-weight: bold;" href="@Url.Action("Games", "MathProblem", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
                     SALIR
                 </a>
             </div>

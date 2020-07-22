@@ -45,7 +45,7 @@
           <Property Name="TemaId" Type="int" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Orden" Type="int" />
-          <Property Name="LevelGame" Type="varchar" MaxLength="3" />
+          <Property Name="LevelGame" Type="int" />
           <Property Name="LevelBIA" Type="varchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="Juego">
@@ -383,7 +383,7 @@
           <Property Name="TemaId" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="Orden" Type="Int32" />
-          <Property Name="LevelGame" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="LevelGame" Type="Int32" />
           <Property Name="LevelBIA" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Juego" Relationship="BDSistemaLudicoModel.FK_Ejercicio_Juego" FromRole="Ejercicio" ToRole="Juego" />
           <NavigationProperty Name="Tema" Relationship="BDSistemaLudicoModel.FK_Ejercicio_Tema" FromRole="Ejercicio" ToRole="Tema" />

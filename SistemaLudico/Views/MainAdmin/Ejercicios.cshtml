@@ -1,7 +1,79 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainAdmin.EjercicioViewModel
 @{
     ViewBag.Title = "Ejercicios";
 }
+<h2>Lista de ejercicios</h2>
 
-<h2>Ejercicios</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <form>
+                <div class="form-group">
+                    <label>Filtro por nombre</label>
+                    <input class="form-control" placeholder="Buscar" />
+                    <br />
+                    <button class="btn btn-danger">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
+
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Valor 1</th>
+                            <th>Valor 2</th>
+                            <th>Respuesta</th>
+                            <th>Archivo Imagen</th>
+                            <th>Tema</th>
+                            <th>Juego</th>
+                            <th>Tipo nivel</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ var contador = 0; }
+                        @foreach (var item in Model.LstEjercicio)
+                        {
+                            <tr class="@(contador % 2 == 0 ? "" : "table-info")">
+                                <td>@item.Valor1</td>
+                                <td>@item.Valor2</td>
+                                <td>@item.Resultado</td>
+                                <td>
+                                    <a class="btn" href="@Url.Content(item.RutaImagen)" style="color:blue" download="">@item.RutaImagen</a>
+                                </td>
+                                <td>@item.Tema.Nombre</td>
+                                <td>@item.Juego.Nombre</td>
+                                <td>
+                                    @switch (@item.LevelBIA)
+                                    {
+                                        case "BAS":
+                                            <span class="badge badge-success float-right">BÁSICO</span>
+                                            break;
+                                        case "INT":
+                                            <span class="badge badge-warning float-right">INTERMEDIO</span>
+                                            break;
+                                        case "AVA":
+                                            <span class="badge badge-danger float-right">AVANZADO</span>
+                                            break;
+                                    }
+
+
+                                </td>
+                                <td>
+                                    <a class="btn" href="@Url.Action("EditarEjercicio","MainAdmin", new { EjercicioId = item.EjercicioId })"><i class="fa fa-edit" style="color:blue"></i></a>
+                                </td>
+                            </tr>
+                            { contador++; }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- end card-box -->
+    </div> <!-- end col -->
+</div>     

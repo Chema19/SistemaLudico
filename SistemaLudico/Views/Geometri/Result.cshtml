@@ -3,11 +3,32 @@
     ViewBag.Title = "Result";
 }
 
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
 
-<div style="background-image: url('@Url.Content("../../Content/assets/img/fig16.jpg")');height:780px">
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: relative;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+</style>
+
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Avatar.png")');">
 
 
-    <div data-reto>
+    <div data-reto class="centervertical">
         <br />
         <br />
         <div class="grid grid-4-4-4 centered">
@@ -27,13 +48,13 @@
         </div>
         <br />
         <div class="grid grid-4-4-4 centered">
-            <div class="grid-column">
-                <h1 style="text-align:center; color:black"> @Model.MensajeFinal </h1>
+            <div class="grid-column card" style="opacity: 0.8;padding-top: 30px;padding-bottom: 30px;margin-bottom: 10px;">
+                <h1 style="text-align:center; color:black;font-size: 60px;font-weight: bold;"> @Model.MensajeFinal </h1>
             </div>
         </div>
         <div class="grid grid-4-4-4 centered">
             <div class="grid-column">
-                <a class="btn" style="background-color:green;  color:white" href="@Url.Action("Games", "Geometri", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
+                <a class="btn" style="background-color:green;  color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Games", "Geometri", new { TemaId = Model.Ejercicio.TemaId, LevelBIA = Model.Ejercicio.LevelBIA})">
                     Pasar al siguiente Juego
                 </a>
             </div>

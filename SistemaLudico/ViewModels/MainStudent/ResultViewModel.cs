@@ -43,14 +43,28 @@ namespace SistemaLudico.ViewModels.MainStudent
                     progreso.Nota = nota;
                 }
                 cd.context.SaveChanges();
+
+                //validar si ya existe el siguiente
+                var nextLevel = (Ejercicio.LevelGame + 1);
+                var ejercicioNext = cd.context.Ejercicio.FirstOrDefault(x => x.LevelGame == nextLevel && x.TemaId == Ejercicio.TemaId);
+
+                if (!cd.context.Progreso.Any(x => x.ParticipanteId == participanteId && x.EjercicioId == ejercicioNext.EjercicioId)) {
+                
+                    var progresoFuture = new Progreso();
+                    cd.context.Progreso.Add(progresoFuture);
+                    progresoFuture.ParticipanteId = participanteId;
+                    progresoFuture.EjercicioId = ejercicioNext.EjercicioId;
+                    progresoFuture.Nota = 0;
+                    cd.context.SaveChanges();
+                }
             }
             else
             {
-                cd.context.Progreso.Add(progreso);
+                /*cd.context.Progreso.Add(progreso);
                 progreso.ParticipanteId = participanteId;
                 progreso.EjercicioId = EjercicioId;
                 progreso.Nota = nota;
-                cd.context.SaveChanges();
+                cd.context.SaveChanges();*/
             }
         }
         public void FillResultLevelBIA(CargarDatosContext cd, Int32? JuegoId, String LevelBIA)

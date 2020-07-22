@@ -50,7 +50,7 @@ namespace SistemaLudico.ViewModels.MainAdmin
                     }
                     if (model.RutaAudio != null)
                     {
-                        tema.RutaAudio = FileHelpers.SaveDocument(model.RutaAudio, "Tema", ".mp3", tema.TemaId);
+                        tema.RutaAudio = FileHelpers.SaveDocument(model.RutaAudio, "Tema", ".mp4", tema.TemaId);
                     }
                     if (model.RutaWord != null)
                     {

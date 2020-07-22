@@ -4,45 +4,79 @@
 }
 
 
-<div class="row">
-    <div class="col-lg-12">
-        @*<h1 style="text-align:center">Curso de matemática</h1>*@
-    </div>
-    <div class="row col-lg-12" style="margin-top:100px">
-        <div class="col-lg-4">
-            <img src="~/Content/assets/img/fig5.PNG" style="display: block;margin-left: auto;margin-right: auto;width:250px;height:450px" />
-        </div>
-        <div class="col-lg-8">
-            <input type="text" id="simpleinput" placeholder="BUSCAR MATERIAL DE CURSO" style="margin-bottom:20px">
-            <h4 for="simpleinput" style="font-weight: bold;margin-bottom:20px;">CURSOS</h4>
-            @foreach (var item in Model.LstCurso)
-            {
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .centervertical {
+        margin: 0;
+        position: absolute;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+</style>
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Temas.jpg")');">
+    <div class="row">
+        <div class="row col-lg-12 centervertical" style="margin-top:100px">
+            <div class="col-lg-4">
+                <img src="@Url.Content("~/Content/assets/img/gift/4.gif")" style="display: block;margin-left: auto;margin-right: auto;width:250px;height:450px" />
+            </div>
+            <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-lg-1">
-                        <img src="~/Content/assets/img/fig6.PNG" style="display: block;margin-left: auto;margin-right: auto;" />
+                    <div class="col-lg-8">
+                        <h4 for="simpleinput" style="font-weight: bold;margin-bottom:20px;font-size:80px;color:black">CURSOS</h4>
                     </div>
-                    <div class="col-lg-7">
-                        <a class="button small col-lg-12" style="background-color:blue; color:white" href="@Url.Action("Temas", "MainStudent", new { CursoId = item.CursoId})">@item.Nombre</a>
+                    <div class="col-lg-4 ">
+                        <h4 for="simpleinput" style="font-weight: bold;margin-top:15px;font-size:50px;color:black">Descarge aquí</h4>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <input type="image" src="~/Content/assets/img/fig12.jpg" width="40px" height="40px" />
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="image" src="~/Content/assets/img/fig13.jpg" width="40px" height="40px" />
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="image" src="~/Content/assets/img/fig14.jpg" width="40px" height="40px" />
+                </div>
+                @foreach (var item in Model.LstCurso)
+                {
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <a class="button small col-lg-12" style="background-color:blue; color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Temas", "MainStudent", new { CursoId = item.CursoId})">@item.Nombre</a>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <a class="btn" href="@Url.Content(item.RutaWord)" style="background-image:url('@Url.Content("~/Content/assets/img/iconos/word.jpeg")');background-repeat: no-repeat;background-size: 40px 40px;height:40px;width:40px" download="@item.Nombre"></a>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a class="btn" href="@Url.Content(item.RutaPdf)" style="background-image:url('@Url.Content("~/Content/assets/img/iconos/pdf.jpeg")');background-repeat: no-repeat;background-size: 40px 40px;height:40px;width:40px" download="@item.Nombre"></a>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a class="btn" href="@Url.Content(item.RutaAudio)" style="background-image:url('@Url.Content("~/Content/assets/img/iconos/video.jpeg")');background-repeat: no-repeat;background-size: 40px 40px;height:40px;width:40px" download="@item.Nombre"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br />
-            }
+                    <br />
+                }
 
-            <a class="col-lg-2 button small" style="background-color:red; color:white">SALIR</a>
+                <a class="col-lg-2 button small" data-style style="background-color:red; color:white;font-size: 20px;font-weight: bold;">SALIR</a>
+            </div>
         </div>
     </div>
 </div>
 
+
+@section scripts{
+    <script>
+
+    </script>
+    }

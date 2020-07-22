@@ -29,7 +29,7 @@ namespace SistemaLudico.Models
         public int TemaId { get; set; }
         public string Estado { get; set; }
         public Nullable<int> Orden { get; set; }
-        public string LevelGame { get; set; }
+        public Nullable<int> LevelGame { get; set; }
         public string LevelBIA { get; set; }
     
         public virtual Juego Juego { get; set; }

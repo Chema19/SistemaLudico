@@ -3,49 +3,103 @@
     ViewBag.Title = "Games";
 }
 
-<h2>Games</h2>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
 
-<div style="background-image: url('../../Content/assets/img/fig16.jpg');height:780px">
-    <div class="row">
-        <div class="col-lg-1" style="margin-top:20%">
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: sticky;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+    .candado {
+        background-image:url('@Url.Content("../../Content/assets/img/iconos/candado.png")');
+        background-repeat: no-repeat;
+        background-size: 40px 40px;
+    }
+</style>
+
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/fig16.jpg")');">
+    <div class="row centervertical">
+        <div class="col-lg-1" style="margin-top:10%">
         </div>
         @{ var contador = 0;}
         @foreach (var item in Model.ListLevelBIA)
         {
             if (@contador % 2 == 0)
             {
-                <div class="col-lg-2" style="margin-top:22%">
-                    <a class="col-lg-12 button small" style="background-color:blue;  color:white;" data-send href="@Url.Action(item.Juego.Action, item.Juego.Controller, new { TemaId = Model.TemaId, LevelGame = item.LevelGame })">JUEGO @item.LevelGame</a>
+                <div class="col-lg-2" style="margin-top:8%">
+                    @if (Model.ListProgreso.Any(x => x.EjercicioId == item.EjercicioId))
+                    {
+                        <a class="col-lg-12 button small" style="background-color:blue;  color:white;font-size: 20px;font-weight: bold;" data-send href="@Url.Action(item.Juego.Action, item.Juego.Controller, new { TemaId = Model.TemaId, LevelGame = item.LevelGame })">JUEGO @item.LevelGame</a>
+                    }
+                    else
+                    {
+                        <a class="col-lg-12 button small @(item.LevelGame == 1 ? "" : "candado")" style="background-color:blue;  color:white;font-size: 20px;font-weight: bold;" data-send data-block>JUEGO @item.LevelGame</a>
+                    }
                 </div>
             }
             else
             {
-                <div class="col-lg-2" style="margin-top:38%">
-                    <a class="col-lg-12 button small" style="background-color:blue;  color:white" data-send href="@Url.Action(item.Juego.Action, item.Juego.Controller, new { TemaId = Model.TemaId, LevelGame = item.LevelGame })">JUEGO @item.LevelGame</a>
+                <div class="col-lg-2" style="margin-top:18%">
+                    @if (Model.ListProgreso.Any(x => x.EjercicioId == item.EjercicioId))
+                    {
+                        <a class="col-lg-12 button small" style="background-color:blue;  color:white;font-size: 20px;font-weight: bold;" data-send href="@Url.Action(item.Juego.Action, item.Juego.Controller, new { TemaId = Model.TemaId, LevelGame = item.LevelGame })">JUEGO @item.LevelGame</a>
+
+                    }
+                    else
+                    {
+                        <a class="col-lg-12 button small candado" style="background-color:blue;  color:white;font-size: 20px;font-weight: bold;" data-send data-block>JUEGO @item.LevelGame</a>
+
+                    }
                 </div>
             }
             contador++;
         }
-        <div class="col-lg-1" style="margin-top:20%">
+        <div class="col-lg-1" style="margin-top:10%">
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-1" style="margin-top:20%">
+    <div class="row" style="margin-top:400px">
+        <div class="col-lg-1">
         </div>
-        <div class="col-lg-2" style="margin-top:12%">
-            <a class="col-lg-12 button small" style="background-color:red;  color:white;" data-send href="@Url.Action("Level","Numeration", new { TemaId = Model.TemaId })">ATRAS</a>
+        <div class="col-lg-2">
+            <a class="col-lg-12 button small" style="background-color:red;  color:white;font-size: 20px;font-weight: bold;" data-send href="@Url.Action("Level","Numeration", new { TemaId = Model.TemaId })">ATRAS</a>
         </div>
-        <div class="col-lg-2" style="margin-top:12%">
+        <div class="col-lg-2">
         </div>
-        <div class="col-lg-2" style="margin-top:12%">
+        <div class="col-lg-2">
         </div>
-        <div class="col-lg-2" style="margin-top:12%">
+        <div class="col-lg-2">
         </div>
-        <div class="col-lg-2" style="margin-top:12%">
+        <div class="col-lg-2">
             @if (Model.ActivateCalificacion)
             {
-                <a class="col-lg-12 button small" style="background-color:yellow;  color:black;" data-send href="@Url.Action("ResultByTopic", "Numeration", new { JuegoId = Model.JuegoId, LevelBIA = Model.LevelBIA })">CALCULAR PUNTAJE FINAL</a>
+                <a class="col-lg-12 button small" style="background-color:yellow;  color:black;font-size: 20px;font-weight: bold;" data-send href="@Url.Action("ResultByTopic", "Numeration", new { JuegoId = Model.JuegoId, LevelBIA = Model.LevelBIA })">CALCULAR PUNTAJE FINAL</a>
             }
         </div>
     </div>
 </div>
+
+
+@section scripts{
+    <script>
+       $('[data-block]').on('click', function () {
+           Swal.fire(
+               "Para desbloquear este nivel debe finalizar los ejercicios anteriores",
+               '',
+               'warning'
+           )
+       });
+    </script>
+}

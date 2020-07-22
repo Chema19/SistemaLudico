@@ -3,21 +3,65 @@
 }
 
 
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 style="text-align:center">Curso de matemática</h1>
-    </div>
-    <div class="row col-lg-12" style="margin-top:100px">
-        <div class="col-lg-6">
-            <a class="btn" style="color:blue;text-decoration:underline;font-size:30px" href="@Url.Action("Index","MainStudent")">ALUMNO</a>
-            <br />
-            <a class="btn" style="color:blue;text-decoration:underline;font-size:30px" href="@Url.Action("Index","MainAdmin")">ADMINISTRADOR DE SISTEMA</a>
-            <br />
-            <img src="~/Content/assets/img/fig11.jpg" style="display: block;margin-left: auto;margin-right: auto;width:350px;height:300px" />
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: absolute;
+        top: 20%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+</style>
+
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Login.png")');">
+    <div class="row ">
+        <div class="row col-lg-12 centervertical" style="margin-top:100px">
+            <div class="col-lg-12" style="text-align:center;font-size:50px">
+                <h1 style="color:black;padding-top:10px;padding-bottom:10px;opacity:0.8" class="card">BIENVENIDOS A SISTEMA LUDICO</h1>
+            </div>
+            <div class="row col-lg-12" style="margin-top:20px">
+                <div class="col-lg-6" style="align-self:center">
+                    <a class="btn col-lg-12 card" style="color:blue;text-decoration:underline;font-size:30px;opacity:0.8;font-weight:bold" href="@Url.Action("Index","MainStudent")">ALUMNO</a>
+                    <br />
+                    <a class="btn col-lg-12 card" style="color:blue;text-decoration:underline;font-size:30px;opacity:0.8;font-weight:bold" href="@Url.Action("Login","MainAdmin")">ADMINISTRADOR DE SISTEMA</a>
+                    <br />
+                    <div class="row col-lg-12">
+                        <div class="col-lg-6">
+                            <img src="@Url.Content("~/Content/assets/img/iconos/icono_cuadrados.png")" style="width:130px;height:130px" class="center" />
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="@Url.Content("~/Content/assets/img/iconos/lapiz (1).png")" style="width:130px;height:130px" class="center" />
+                        </div>
+                        <div class="col-lg-6" style="margin-top:20px">
+                            <img src="@Url.Content("~/Content/assets/img/iconos/lapiz.png")" style="width:130px;height:130px;"  class="center"/>
+                        </div>
+                        <div class="col-lg-6" style="margin-top:20px">
+                            <img src="@Url.Content("~/Content/assets/img/iconos/numero.png")" style="width:130px;height:130px;"  class="center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="@Url.Content("~/Content/assets/img/gift/2.gif")" style="display: block;margin-left: auto;margin-right: auto;width:500px;height:550px" />
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6">
-            <img src="~/Content/assets/img/fig10.jpg" style="display: block;margin-left: auto;margin-right: auto;width:500px;height:450px"/>
-       </div>
     </div>
 </div>

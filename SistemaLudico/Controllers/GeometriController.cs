@@ -21,19 +21,19 @@ namespace SistemaLudico.Controllers
             vm.Fill(CargarDatosContext(), TemaId, LevelBIA);
             return View(vm);
         }
-        public ActionResult JuegoPlanas(Int32? TemaId, String LevelGame)
+        public ActionResult JuegoPlanas(Int32? TemaId, Int32? LevelGame)
         {
             JuegoViewModel vm = new JuegoViewModel();
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);
             return View(vm);
         }
-        public ActionResult JuegoLineas(Int32? TemaId, String LevelGame)
+        public ActionResult JuegoLineas(Int32? TemaId, Int32? LevelGame)
         {
             JuegoViewModel vm = new JuegoViewModel();
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);
             return View(vm);
         }
-        public ActionResult JuegoCuerpo(Int32? TemaId, String LevelGame)
+        public ActionResult JuegoCuerpo(Int32? TemaId, Int32? LevelGame)
         {
             JuegoViewModel vm = new JuegoViewModel();
             vm.Fill(CargarDatosContext(), TemaId, LevelGame);
@@ -87,7 +87,8 @@ namespace SistemaLudico.Controllers
             try
             {
                 var ejercicio = context.Ejercicio.FirstOrDefault(x => x.EjercicioId == EjercicioId);
-                if (Resp != ejercicio.Resultado)
+                var test = ejercicio.Resultado.ToLower();
+                if (Resp != ejercicio.Resultado.ToLower())
                 {
                     var result = new
                     {
