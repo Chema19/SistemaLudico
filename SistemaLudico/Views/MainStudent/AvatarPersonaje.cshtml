@@ -5,198 +5,233 @@
 }
 
 
-<html>
-<head>
-    <title>Collectibles Painter</title>
-    <link rel="stylesheet" href="~/Content/assets/avatar/content/css/reset.css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="~/Content/assets/avatar/content/css/fonts.css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="~/Content/assets/avatar/content/css/layout.css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="~/Content/assets/avatar/content/css/pattern-carousel_skin.css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="~/Content/assets/avatar/content/css/plugin.css" media="screen" charset="utf-8" />
-    <!-- <link rel="stylesheet" media="screen" href="~/Content/assets/avatar/content/css/colorpicker.css" /> -->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/Content/assetsAdmin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/assetsAdmin/css/app.min.css" rel="stylesheet" />
+    <style>
+    
+        .center {
+            display: block;
+            margin-left: 35%;
+            margin-right: auto;
+            width: 40%;
+        }
+        .centervertical {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-30%);
+            transform: translateY(-30%);
+        }
+        .fondo {
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
 </head>
 
-
 <body>
-    <div id="pageContainer" class="">
-        <div id="webGLerror" class="hide">
-            This page requires a browser that supports WebGL.<br /><a href="http://get.webgl.org">Click here to upgrade your browser.</a>
-        </div>
-        <div id="loadingMenu" class="popupMenu hide">
-            <h4>Welcome to Collectibles Painter</h4>
-            <h2>Select a model to begin</h2>
-            <div>
-                <img src="~/Content/assets/avatar/content/images/assets/DollSelectionM_shadow.png" alt="Male Doll" width="150" height="322" id="dollbaseMale" /></li>
-                <img src="~/Content/assets/avatar/content/images/assets/DollSelectionF_shadow.png" alt="Female Doll" width="150" height="322" id="dollbaseFemale" /></li>
-            </div>
+
+    <div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Login.png")');">
+        <div class="col-lg-12" style="text-align: center;padding: 1rem;">
+            <label class="card-box" style="font-size:40px;margin-top:100px; font-weight:bold; color:black">PERSONALIZA TU AVATAR</label>
         </div>
 
-        <div id="tools" class="palette hide">
-            <h3>Tools</h3>
-            <ul>
-                <li class="zoom"><a href="#">Zoom</a></li>
-                <li class="options"><a href="#">Options</a></li>
-                <li class="cameraReset"><a href="#">CameraReset</a></li>
-                <li class="undo hide"><a href="#">Undo</a></li>
-                <li class="blank hide"><a href="#">Options</a></li>
-                <li class="doll1"><a href="#">doll1</a></li>
-                <li class="doll2"><a href="#">"doll2</a></li>
-            </ul>
-        </div>
+        <div class="col-lg-12 centervertical">
 
-        <div id="colorPalette" class="palette hide">
-            <h3>Colors</h3>
-            <div id="mini">
-                <div class="north"><span id="mHEX"> </span></div>
-                <div class="south" id="mSpec" style="HEIGHT: 128px; WIDTH: 128px;" onmousedown="Picker.core('mCur',event)">
-                    <div id="mCur" style="TOP: 82px; LEFT: 68px;"></div>
-                    <img src="~/Content/assets/avatar/content/images/circle.png" onmousedown="return false;" ondrag="return false;" onselectstart="return false;">
-                </div>
-            </div>
-        </div>
-        <div id="decals" class="jcarousel-skin-decals hide">
-            <ul>
-                <li id="body" class="body selected"><a href="#"> </a></li>
-                <li id="eye" class="eye"><a href="#"> </a></li>
-                <li id="hair" class="hair"><a href="#"> </a></li>
-                <li id="shirt" class="shirt"><a href="#"> </a></li>
-                <li id="pants" class="pants"><a href="#"> </a></li>
-                <li id="sticker" class="sticker"><a href="#"> <numSticker id="stickerCounter"> 0/8 </numSticker></a></li>
-            </ul>
-        </div>
-        <div id="assets" class="hide">
-            <div id="bodyAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="mat_default"><img src="~/Content/assets/avatar/content/texture/material_DullPlastic.png" /></li>
-                    <li id="mat_barlights"><img src="~/Content/assets/avatar/content/texture/material_barlights.png" /></li>
-                    <li id="mat_gloss"><img src="~/Content/assets/avatar/content/texture/material_gloss.png" /></li>
-                    <li id="mat_wax"><img src="~/Content/assets/avatar/content/texture/material_wax.png" /></li>
-                    <li id="mat_inGlass"><img src="~/Content/assets/avatar/content/texture/material_inGlass.png" /></li>
-                    <li id="mat_normals"><img src="~/Content/assets/avatar/content/texture/material_normal.png" /></li>
-                    <li id="mat_paint"><img src="~/Content/assets/avatar/content/texture/material_paint.png" /></li>
-                    <li id="mat_plastic"><img src="~/Content/assets/avatar/content/texture/material_plastic.png" /></li>
-                    <li id="mat_shadows"><img src="~/Content/assets/avatar/content/texture/material_shadows.png" /></li>
-                    <li id="mat_skin"><img src="~/Content/assets/avatar/content/texture/material_skin.png" /></li>
-
-                </ul>
-            </div>
-            <div id="eyeAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="head_1"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_01.png" /></li>
-                    <li id="head_2"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_02.png" /></li>
-                    <li id="head_3"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_03.png" /></li>
-                    <li id="head_4"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_04.png" /></li>
-                    <li id="head_5"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_05.png" /></li>
-                    <li id="head_6"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_06.png" /></li>
-                    <li id="head_7"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_07.png" /></li>
-                    <li id="head_8"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_08.png" /></li>
-                    <li id="head_9"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_09.png" /></li>
-                    <li id="head_10"><img src="~/Content/assets/avatar/content/images/assets/Icon_HeadDecal_10.png" /></li>
-                </ul>
-            </div>
-
-            <div id="hairAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="hair_1"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_01.png" /></li>
-                    <li id="hair_2"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_02.png" /></li>
-                    <li id="hair_3"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_03.png" /></li>
-                    <li id="hair_4"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_04.png" /></li>
-                    <li id="hair_5"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_05.png" /></li>
-                    <li id="hair_6"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_06.png" /></li>
-                    <li id="hair_7"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_07.png" /></li>
-                    <li id="hair_8"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_08.png" /></li>
-                    <li id="hair_9"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_09.png" /></li>
-                    <li id="hair_10"><img src="~/Content/assets/avatar/content/images/assets/Icon_HairDecal_10.png" /></li>
-                </ul>
-            </div>
-            <div id="shirtAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="body_1"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_01.png" /></li>
-                    <li id="body_2"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_02.png" /></li>
-                    <li id="body_3"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_03.png" /></li>
-                    <li id="body_4"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_04.png" /></li>
-                    <li id="body_5"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_05.png" /></li>
-                    <li id="body_6"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_06.png" /></li>
-                    <li id="body_7"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_07.png" /></li>
-                    <li id="body_8"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_08.png" /></li>
-                    <li id="body_9"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_09.png" /></li>
-                    <li id="body_10"><img src="~/Content/assets/avatar/content/images/assets/Icon_BodyDecal_10.png" /></li>
-                </ul>
-            </div>
-            <div id="pantsAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="pants_1"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_01.png" /></li>
-                    <li id="pants_2"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_02.png" /></li>
-                    <li id="pants_3"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_03.png" /></li>
-                    <li id="pants_4"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_04.png" /></li>
-                    <li id="pants_5"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_05.png" /></li>
-                    <li id="pants_6"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_06.png" /></li>
-                    <li id="pants_7"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_07.png" /></li>
-                    <li id="pants_8"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_08.png" /></li>
-                    <li id="pants_9"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_09.png" /></li>
-                    <li id="pants_10"><img src="~/Content/assets/avatar/content/images/assets/Icon_LegsDecal_10.png" /></li>
-                </ul>
-            </div>
-            <div id="stickerAssets" class="jcarousel-skin-patterns">
-                <ul>
-                    <li id="sticker_1"><img src="~/Content/assets/avatar/content/texture/StampDecal_01_DM.png" /></li>
-                    <li id="sticker_2"><img src="~/Content/assets/avatar/content/texture/StampDecal_02_DM.png" /></li>
-                    <li id="sticker_3"><img src="~/Content/assets/avatar/content/texture/StampDecal_03_DM.png" /></li>
-                    <li id="sticker_4"><img src="~/Content/assets/avatar/content/texture/StampDecal_04_DM.png" /></li>
-                    <li id="sticker_5"><img src="~/Content/assets/avatar/content/texture/StampDecal_05_DM.png" /></li>
-                    <li id="sticker_6"><img src="~/Content/assets/avatar/content/texture/StampDecal_06_DM.png" /></li>
-                    <li id="sticker_7"><img src="~/Content/assets/avatar/content/texture/StampDecal_07_DM.png" /></li>
-                    <li id="sticker_8"><img src="~/Content/assets/avatar/content/texture/StampDecal_08_DM.png" /></li>
-                    <li id="sticker_9"><img src="~/Content/assets/avatar/content/texture/StampDecal_09_DM.png" /></li>
-                    <li id="sticker_10"><img src="~/Content/assets/avatar/content/texture/StampDecal_10_DM.png" /></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="controlArea" class="hide" onmousedown="return false">
-            <canvas id="canvas" width="500" height="500" style="cursor: pointer" onmousewheel="wheel(event)" onmousedown="g_mouseDown = true; return mouseDown(event)">&lt;canvas&gt; needs a WebGL enabled browser</canvas>
-        </div>
-
-        <table>
-            <!--
-            <tr><td id="fps"></td></tr>
-            <tr><td id="mouse_delta"></td></tr>
-            <tr><td id="mouse_state"></td></tr>
-            <tr><td id="dbg_intent"></td></tr>
-            <tr><td id="dbg_model"></td></tr>
-            <tr><td id="mtx_x"></td></tr>
-            <tr><td id="mtx_y"></td></tr>
-            <tr><td id="mtx_z"></td></tr>
-            <tr><td id="mtx_t"></td></tr>
-            -->
-        </table>
-
-        <div id="optionsMenu" class="hide">
-            <div id="gear"><img src="~/Content/assets/avatar/content/images/send.png" /></div>
-            <div id="close">X</div>
-            <h2>Collectibles Painter Options</h2>
-            <div>
-                <div id="share" class="button">
-                    Share with Friends
-                    <div class="inputs">
-                        Copy the link below to share with your friends:
-                        <input name="long-link" id="long-link" readonly="readonly" value="http://www.amazon.com/12345/test/1234/test?123=456" />
-                        <!-- <input name="bitly" id="bitly" readonly="readonly" value="Loading..."/> -->
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card-box">
+                        <canvas class="center" id="canvas" style="height: 239px !important; width: 500px !important;"></canvas>
                     </div>
                 </div>
-                <div id="restart" class="button">Start Over</div>
-                <div id="graphics" class="button">Graphics Options <span><a href="#" id="high">High</a></span> <span><a href="#" id="low">Low</a></span></div>
+                <div class="col-xl-6">
+                    <div class="card-box">
+                        <input type="hidden" id="colores" />
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#rostro" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                    ROSTRO
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#ojo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    OJO
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#pelo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    PELO
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#boca" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    BOCA
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#gafas" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    GAFAS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#bigote" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    BIGOTE
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#barba" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    BARBA
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#cejas" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    CEJAS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#nariz" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    NARIZ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#accesorios" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    ACCESORIOS
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="avatar">
+                            <div class="tab-pane show active" id="rostro">
+                                <div id="Rostro">
+                                    <img src="~/Content/assets/avatar/1_piel/1.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="ojo">
+                                <div id="Ojos">
+                                    <img src="~/Content/assets/avatar/2_ojos/1.png" />
+                                    <img src="~/Content/assets/avatar/2_ojos/2.png" />
+                                    <img src="~/Content/assets/avatar/2_ojos/3.png" />
+                                    <img src="~/Content/assets/avatar/2_ojos/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="pelo">
+                                <div id="Pelo">
+                                    <img src="~/Content/assets/avatar/4_pelo/1.png" />
+                                    <img src="~/Content/assets/avatar/4_pelo/2.png" />
+                                    <img src="~/Content/assets/avatar/4_pelo/3.png" />
+                                    <img src="~/Content/assets/avatar/4_pelo/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="boca">
+                                <div id="Boca">
+                                    <img src="~/Content/assets/avatar/3_boca/2.png" />
+                                    <img src="~/Content/assets/avatar/3_boca/1.png" />
+                                    <img src="~/Content/assets/avatar/3_boca/3.png" />
+                                    <img src="~/Content/assets/avatar/3_boca/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="gafas">
+                                <div id="Gafas">
+                                    <img src="~/Content/assets/avatar/5_gafas/1.png" />
+                                    <img src="~/Content/assets/avatar/5_gafas/2.png" />
+                                    <img src="~/Content/assets/avatar/5_gafas/3.png" />
+                                    <img src="~/Content/assets/avatar/5_gafas/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="bigote">
+                                <div id="Bigote">
+                                    <img src="~/Content/assets/avatar/6_bigote/1.png" />
+                                    <img src="~/Content/assets/avatar/6_bigote/2.png" />
+                                    <img src="~/Content/assets/avatar/6_bigote/3.png" />
+                                    <img src="~/Content/assets/avatar/6_bigote/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="barba">
+                                <div id="Barba">
+                                    <img src="~/Content/assets/avatar/7_barba/1.png" />
+                                    <img src="~/Content/assets/avatar/7_barba/2.png" />
+                                    <img src="~/Content/assets/avatar/7_barba/3.png" />
+                                    <img src="~/Content/assets/avatar/7_barba/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="cejas">
+                                <div id="Cejas">
+                                    <img src="~/Content/assets/avatar/8_cejas/1.png" />
+                                    <img src="~/Content/assets/avatar/8_cejas/2.png" />
+                                    <img src="~/Content/assets/avatar/8_cejas/3.png" />
+                                    <img src="~/Content/assets/avatar/8_cejas/4.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="nariz">
+                                <div id="Nariz">
+                                    <img src="~/Content/assets/avatar/91_nariz/1.png" />
+                                    <img src="~/Content/assets/avatar/91_nariz/2.png" />
+                                    <img src="~/Content/assets/avatar/91_nariz/4.png" />
+                                    <img src="~/Content/assets/avatar/91_nariz/3.png" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="accesorios">
+                                <div id="Accesorios">
+                                    <img src="~/Content/assets/avatar/92_accesorios/1.png" />
+                                    <img src="~/Content/assets/avatar/92_accesorios/2.png" />
+                                    <img src="~/Content/assets/avatar/92_accesorios/3.png" />
+                                    <img src="~/Content/assets/avatar/92_accesorios/4.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-12" style="text-align: center;padding: 1rem;">
+                <a  id="Descargar" data-save class="btn btn-success width-lg" style="color:black;width: 400px;height: 100px;padding-top: 20px;font-size: 40px;">GUARDAR</a>
             </div>
         </div>
+        <br />
+        
     </div>
-    <div id="footer"><a href="http://www.humanengines.com" target="_blank"><img src="~/Content/assets/avatar/content/images/HumanEngines-logo.png" alt="HumanEngines" /></a></div>
-    <!-- JQuery Library hosted on Google -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/jquery-ui.min.js"></script>}
-    <script src="@Url.Content("~/Content/assets/avatar/script-compiled/collectibles.js")"></script>
+    <script src="@Url.Content("~/Content/assets/avatar/jquery-2.1.4.min.js")"></script>
+    <script src="@Url.Content("~/Content/assetsAdmin/js/vendor.min.js")"></script>
+    <script src="@Url.Content("~/Content/assetsAdmin/js/app.min.js")"></script>
+    <script src="@Url.Content("~/Content/assets/avatar/Cubexy.js")"></script>
+
+    <script>
+        $('#avatar').Cubexy();
+        $('[data-save]').on('click', function () {
+            var can = document.getElementById('canvas');
+            var ctx = can.getContext('2d');
+
+            var img = new Image();
+            img.src = can.toDataURL();
+        });
+
+        $("[data-save]").click(function () {
+            var image = document.getElementById("canvas").toDataURL("image/png");
+            image = image.replace('data:image/png;base64,', '');
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("saveImage", "MainStudent")',
+                data: '{ "imageData" : "' + image + '" }',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (msg) {
+                    alert('Image saved successfully !');
+                    window.location.href = "http://localhost:53995/MainStudent/Avatar";
+                }
+            });
+        });
+    </script>
 </body>
-
-
-
 </html>
-

@@ -32,6 +32,7 @@ namespace SistemaLudico.Models
         public string Polo { get; set; }
         public string Pantalo { get; set; }
         public string Zapatillas { get; set; }
+        public string Avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Progreso> Progreso { get; set; }

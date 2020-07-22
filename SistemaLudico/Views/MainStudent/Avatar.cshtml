@@ -1,36 +1,58 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainStudent.AvatarViewModel
 @{
     ViewBag.Title = "Avatar";
 }
 
+<style>
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
-<div class="row">
-    <div class="col-lg-12">
-        @*<h1 style="text-align:center">Curso de matemática</h1>*@
-    </div>
-    <div class="row col-lg-12" style="margin-top:100px">
-        <div class="col-lg-3">
-            <a class="col-lg-8 button small" style="background-color:black" href="@Url.Action("AvatarPersonaje","MainStudent")">CARACTERÍSTICAS</a>
-        </div>
-        <div class="col-lg-6">
-            <img src="~/Content/assets/img/fig4.PNG" style="display: block;margin-left: auto;margin-right: auto;width:200px;height:200px" />
-            <h1 style="text-align:center;margin-top:20px">Nombre de usuario</h1>
-            <input type="text" id="simpleinput" class="form-control" value="Yanina Huaroto">
-            <div class="row col-lg-12">
-                <div class="col-lg-6">
-                    <a class="col-lg-12 button small" style="background-color:blue;margin-top:20px;color:white" href="@Url.Action("Cursos","MainStudent")">GUARDAR</a>
-                </div>
-                <div class="col-lg-6">
-                    <button class="button small" style="background-color:green;margin-top:20px">IR A CASA</button>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .centervertical {
+        margin: 0;
+        position: absolute;
+        top: 30%;
+        -ms-transform: translateY(-30%);
+        transform: translateY(-30%);
+    }
+</style>
+
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Login.png")');">
+    <div class="col-lg-12 centervertical">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="row col-lg-6" style="margin-top:100px">
+                <div class="col-lg-12">
+                    <img src="@Url.Content(Model.Url)" style="display: block;margin-left: auto;margin-right: 200px;width:400px;height:200px" />
+                    <h1 style="text-align:center;margin-top:20px;color:black">Nombre de usuario</h1>
                     <br />
+                    <input type="text" id="simpleinput" class="form-control" value="@Model.Nombre">
+                    <div class="row col-lg-12">
+                        <div class="col-lg-12">
+                            <a class="col-lg-12 button small" style="background-color:blue;margin-top:20px;color:white" href="@Url.Action("Cursos","MainStudent")">Ir Al menu cursos</a>
+
+                        </div>
+                        <hr />
+                        <div class="col-lg-12" style="margin-top:20px">
+                            <a class="col-lg-12 button small" style="background-color:black" href="@Url.Action("AvatarPersonaje","MainStudent")">Editar Avatar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-3">
+            </div>
         </div>
-        <div class="col-lg-3">
-            <button class="button small" style="background-color:red">OPCIONES</button>
-            <br />
-            <button class="button small" style="background-color:orange;margin-top:5px">COLORES</button>
-        </div>
+
     </div>
+
 </div>
 

@@ -1,6 +1,8 @@
-﻿using SistemaLudico.ViewModels.MainStudent;
+﻿using SistemaLudico.Helpers;
+using SistemaLudico.ViewModels.MainStudent;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,12 +36,22 @@ namespace SistemaLudico.Controllers
 
         public ActionResult Avatar()
         {
-            return View();
+            AvatarViewModel vm = new AvatarViewModel();
+            vm.Fill(CargarDatosContext());
+            return View(vm);
         }
         public ActionResult AvatarPersonaje()
         {
+
             return View();
         }
+        [HttpPost]
+        public JsonResult saveImage(string imageData) {
+            AvatarViewModel vm = new AvatarViewModel();
+            vm.SaveAvatar(CargarDatosContext(), imageData);
+            return Json("");
+        }
+    
         [HttpPost]
         public ActionResult Avatar(int? p)
         {

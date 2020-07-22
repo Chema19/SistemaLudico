@@ -70,5 +70,24 @@ namespace SistemaLudico.Helpers
                 return rutePhoto;
             }
         }
+        public static string SaveAvatar(string imageData, string idStudent) {
+
+        
+
+            string fileNameWitPath = HttpContext.Current.Server.MapPath("~/Files/Student/" + idStudent + ".png");
+            string ruta = String.Empty;
+            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+            {
+                using (BinaryWriter bw = new BinaryWriter(fs))
+
+                {
+                    byte[] data = Convert.FromBase64String(imageData);
+                    bw.Write(data);
+                    bw.Close();
+                    ruta = "~/Files/Student/" + idStudent + ".png";
+                }
+            }
+            return ruta;
+        }
     }
 }
