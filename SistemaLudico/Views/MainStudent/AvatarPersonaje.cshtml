@@ -11,16 +11,19 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="~/Content/assetsAdmin/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/assetsAdmin/css/app.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assetsAdmin/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assetsAdmin/css/app.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assetsAdmin/libs/sweetalert2/sweetalert2.min.css")" rel="stylesheet" />
+
     <style>
-    
+
         .center {
             display: block;
             margin-left: 35%;
             margin-right: auto;
             width: 40%;
         }
+
         .centervertical {
             margin: 0;
             position: absolute;
@@ -28,12 +31,14 @@
             -ms-transform: translateY(-30%);
             transform: translateY(-30%);
         }
+
         .fondo {
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         body, html {
             height: 100%;
             margin: 0;
@@ -196,16 +201,17 @@
 
 
             <div class="col-lg-12" style="text-align: center;padding: 1rem;">
-                <a  id="Descargar" data-save class="btn btn-success width-lg" style="color:black;width: 400px;height: 100px;padding-top: 20px;font-size: 40px;">GUARDAR</a>
+                <a id="Descargar" data-save class="btn btn-success width-lg" style="color:black;width: 400px;height: 100px;padding-top: 20px;font-size: 40px;">GUARDAR</a>
             </div>
         </div>
         <br />
-        
+
     </div>
     <script src="@Url.Content("~/Content/assets/avatar/jquery-2.1.4.min.js")"></script>
     <script src="@Url.Content("~/Content/assetsAdmin/js/vendor.min.js")"></script>
     <script src="@Url.Content("~/Content/assetsAdmin/js/app.min.js")"></script>
     <script src="@Url.Content("~/Content/assets/avatar/Cubexy.js")"></script>
+    <script src="@Url.Content("~/Content/assetsAdmin/libs/sweetalert2/sweetalert2.min.js")"></script>
 
     <script>
         $('#avatar').Cubexy();
@@ -227,7 +233,11 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (msg) {
-                    alert('Image saved successfully !');
+                    Swal.fire(
+                        "Avatar guardado correctamente",
+                        '',
+                        'success'
+                    )
                     window.location.href = "http://localhost:53995/MainStudent/Avatar";
                 }
             });
