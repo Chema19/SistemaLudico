@@ -1,7 +1,26 @@
-﻿
+﻿@model SistemaLudico.ViewModels.MainAdmin.AdministradorViewModel
 @{
     ViewBag.Title = "Usuario";
 }
 
-<h2>Usuario</h2>
+<h2>Perfil de administrador</h2>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="dropdown float-right">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                    <i class="mdi mdi-dots-horizontal"></i>
+                </a>
+            </div>
+            <div class="media">
+                <div class="media-body pl-1">
+                    <h3 class="mt-1 mb-0">Nombre     : @Model.Nombre</h3>
+                    <h3 class="mt-1 mb-0">Apellido   : @Model.Apellido</h3>
+                    <h3 class="mt-1 mb-0">Usuario    : @Model.Usuario</h3>
+                    <h3 class="mt-1 mb-0">Contraseña : @Model.Contraseña</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

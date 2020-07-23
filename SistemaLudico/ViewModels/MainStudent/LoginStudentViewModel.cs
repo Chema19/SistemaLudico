@@ -22,6 +22,7 @@ namespace SistemaLudico.ViewModels.MainStudent
 
         public void Fill(bool registrado) {
             this.Registrado = registrado;
+            context.Session["PARTICIPANTEID"] = "";
         }
 
         public void Validacion(CargarDatosContext cd, LoginStudentViewModel model) {

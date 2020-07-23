@@ -195,6 +195,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MainAdmin\AdministradorViewModel.cs" />
     <Compile Include="ViewModels\MainAdmin\CursoViewModel.cs" />
     <Compile Include="ViewModels\MainAdmin\LoginRegisterViewModel.cs" />
     <Compile Include="ViewModels\MainAdmin\TemaViewModel.cs" />
@@ -599,6 +600,8 @@
     <Content Include="Content\assets\img\Fondos\Fondo_Temas.jpg" />
     <Content Include="Content\assets\img\gift\2.gif" />
     <Content Include="Content\assets\img\gift\6.gif" />
+    <Content Include="Content\assets\img\gift\s1.gif" />
+    <Content Include="Content\assets\img\gift\s2.gif" />
     <Content Include="Content\assets\img\hombre.png" />
     <Content Include="Content\assets\img\iconos\avatar.jpg" />
     <Content Include="Content\assets\img\iconos\borrador.jpeg" />

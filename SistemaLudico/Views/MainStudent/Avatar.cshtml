@@ -32,18 +32,18 @@
             </div>
             <div class="row col-lg-6" style="margin-top:100px">
                 <div class="col-lg-12">
-                    <img src="@Url.Content(Model.Url)" style="display: block;margin-left: auto;margin-right: 200px;width:400px;height:200px" />
+                    <img src="@(Model.Url == null ? Url.Content("~/Content/assets/img/fig4.PNG") : Url.Content(Model.Url))" style="display: block;margin-left: auto;margin-right: 200px;width:400px;height:200px" />
                     <h1 style="text-align:center;margin-top:20px;color:black">Nombre de usuario</h1>
                     <br />
                     <input type="text" id="simpleinput" class="form-control" value="@Model.Nombre">
                     <div class="row col-lg-12">
                         <div class="col-lg-12">
-                            <a class="col-lg-12 button small" style="background-color:blue;margin-top:20px;color:white" href="@Url.Action("Cursos","MainStudent")">Ir Al menu cursos</a>
+                            <a class="col-lg-12 button small" style="background-color:#29ABE2;margin-top:20px;color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Cursos","MainStudent")">Ir Al menu cursos</a>
 
                         </div>
                         <hr />
                         <div class="col-lg-12" style="margin-top:20px">
-                            <a class="col-lg-12 button small" style="background-color:black" href="@Url.Action("AvatarPersonaje","MainStudent")">Editar Avatar</a>
+                            <a class="col-lg-12 button small" style="background-color:#D4145A;font-size: 20px;font-weight: bold;" href="@Url.Action("AvatarPersonaje","MainStudent")">Editar Avatar</a>
                         </div>
                     </div>
                 </div>

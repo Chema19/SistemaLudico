@@ -48,7 +48,14 @@
                     </div>
                     <div class="col-lg-6">
                         <a class="col-lg-6 button small" data-style id="play-video" data-start-class style="background-color:orange; color:white;font-size: 20px;font-weight: bold;">INICIAR CLASE</a>
-                        <a class="col-lg-8 button small" data-style data-start-example style="background-color:cadetblue; color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Level",Model.Tema.Controller, new { TemaId = Model.Tema.TemaId })" hidden="hidden">EXPLICACIÓN EJEMPLO</a>
+                        @if (Model.Tema.TemaId != 3)
+                        {
+                            <a class="col-lg-8 button small" data-style data-start-example style="background-color:cadetblue; color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Level", Model.Tema.Controller, new { TemaId = Model.Tema.TemaId })" hidden="hidden">EXPLICACIÓN EJEMPLO</a>
+                        }
+                        else
+                        {
+                            <a class="col-lg-8 button small" data-style data-start-example style="background-color:cadetblue; color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Question1", "MathProblem", new { TemaId = Model.Tema.TemaId })" hidden="hidden">EXPLICACIÓN EJEMPLO</a>
+                        }
                     </div>
                 </div>
             </div>

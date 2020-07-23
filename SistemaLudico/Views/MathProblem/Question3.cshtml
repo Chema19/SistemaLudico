@@ -4,6 +4,17 @@
 }
 
 <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .fondo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .center {
         display: block;
         margin-left: auto;
@@ -19,56 +30,58 @@
     }
 </style>
 
-<div class="row">
-    <div class="col-lg-12">
-        @*<h1 style="text-align:center">Diagrama parte todo</h1>*@
-    </div>
-    <div class="row col-lg-12" style="margin-top:70px">
-        <div class="col-lg-10">
-            <video controls="controls" class="center">
-                <source src="@Url.Content("~/Content/assets/img/problem/math/problemaditivo/Paso3_PreguntasUltimas.mp4")" type="video/mp4" />
-            </video>
-            <div class="row">
-                <div class="col-lg-4">
-                    <a class="col-lg-6 button small" style="background-color:red; color:white" href="@Url.Action("Question2","MathProblem" , new {TemaId = Model.tema.TemaId  })">ATRAS</a>
-                </div>
-                <div class="col-lg-4">
-                    <a class="col-lg-10 button small" data-start-class style="background-color:orange; color:white">INICIAR CLASE</a>
-                </div>
-                <div class="col-lg-4">
-                    <a class="col-lg-10 button small" data-start-box style="background-color:cadetblue; color:white" hidden="hidden" data-answer-box>HABILITAR CUADRO PREGUNTA</a>
-                    <a class="col-lg-10 button small" data-next style="background-color:purple; color:white" hidden="hidden" data-answer-box href="@Url.Action("TemaStart","MainStudent", new { TemaId = Model.tema.TemaId } )">INICIAR JUEGO</a>
+<div class="fondo" style="background-image: url('@Url.Content("../../Content/assets/img/Fondos/Fondo_Temas.jpg")')">
+    <div class="row">
+        <div class="col-lg-12">
+            @*<h1 style="text-align:center">Diagrama parte todo</h1>*@
+        </div>
+        <div class="row col-lg-12 centervertical" style="margin-top:70px">
+            <div class="col-lg-9">
+                <video controls="controls">
+                    <source src="@Url.Content("~/Content/assets/img/problem/math/problemaditivo/Paso3_PreguntasUltimas.mp4")" type="video/mp4" />
+                </video>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="col-lg-6 button small" style="background-color:red; color:white;font-size: 20px;font-weight: bold;" href="@Url.Action("Question2","MathProblem" , new {TemaId = Model.tema.TemaId  })">ATRAS</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="col-lg-10 button small" data-start-class style="background-color:orange; color:white;font-size: 20px;font-weight: bold;">INICIAR CLASE</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <a class="col-lg-10 button small" data-start-box style="background-color:cadetblue; color:white;font-size: 20px;font-weight: bold;" hidden="hidden" data-answer-box>HABILITAR CUADRO PREGUNTA</a>
+                        <a class="col-lg-10 button small" data-next style="background-color:purple; color:white;font-size: 20px;font-weight: bold;" hidden="hidden" data-answer-box href="@Url.Action("Level","MathProblem", new { TemaId = Model.tema.TemaId } )">INICIAR JUEGO</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2" data-box hidden="hidden">
-            <div class="card centervertical">
-                <div class="card-body">
-                    <h4 style="text-align:center">RESPONDER A LA PREGUNTA</h4>
-                    <br />
-                    <textarea class="col-lg-12"></textarea>
-                    <hr />
-                    <a class="col-lg-12 button small" style="background-color:green;  color:white" data-send>ENVIAR</a>
+            <div class="col-lg-3" data-box hidden="hidden">
+                <div class="card centervertical">
+                    <div class="card-body">
+                        <h4 style="text-align:center">RESPONDER A LA PREGUNTA</h4>
+                        <br />
+                        <textarea class="col-lg-12" rows="8"></textarea>
+                        <hr />
+                        <a class="col-lg-12 button small" style="background-color:green;  color:white;font-size: 20px;font-weight: bold;" data-send>ENVIAR</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@section scripts{
-    <script>
-        $('[data-start-class]').on('click', function () {
-            $('[data-start-box]').removeAttr('hidden', 'hidden');
-            $('video').trigger('play');
-            $('[data-start-class]').prop('hidden', 'hidden');
-        });
-        $('[data-start-box]').on('click', function () {
-            $('[data-box]').removeAttr('hidden', 'hidden');
-            $('[data-start-box]').prop('hidden', 'hidden');
-        });
+    @section scripts{
+        <script>
+            $('[data-start-class]').on('click', function () {
+                $('[data-start-box]').removeAttr('hidden', 'hidden');
+                $('video').trigger('play');
+                $('[data-start-class]').prop('hidden', 'hidden');
+            });
+            $('[data-start-box]').on('click', function () {
+                $('[data-box]').removeAttr('hidden', 'hidden');
+                $('[data-start-box]').prop('hidden', 'hidden');
+            });
 
-        $('[data-send]').on('click', function () {
-            $('[data-next]').removeAttr('hidden', 'hidden');
-        });
-    </script>
-}
+            $('[data-send]').on('click', function () {
+                $('[data-next]').removeAttr('hidden', 'hidden');
+            });
+        </script>
+    }

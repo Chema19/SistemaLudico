@@ -188,7 +188,9 @@ namespace SistemaLudico.Controllers
         #region Usuario
         public ActionResult Usuario()
         {
-            return View();
+            AdministradorViewModel vm = new AdministradorViewModel();
+            vm.Fill(CargarDatosContext());
+            return View(vm);
         }
         #endregion
     }
